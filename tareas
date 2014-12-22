@@ -1,0 +1,28 @@
+TAREAS:
+crear un logger
+que los empleados y las licencias se puedan cargar con el documento tambien
+arrastrar empleados al tw de licencias
+si es una licencia de tipo 58, los dias no pueden ser mayores a 1
+optimizar el guardado de los valores del campo observacion al empleado
+error si filtran las licencias por semana cuando recien empieza el mes
+no se puede editar una licencia de un tipo a tipo 58 sin esquivar la restriccion de mas de 2 por mes y 6 por año
+limpiar los datos del empleado eliminado
+unificar la parte del modelo donde los reemplazos de atributos en las consultas son iguales
+no funciona el filtro de los periodos una vez filtrado por tipos
+al seleccionar un empleado realiza una actualizacion a la base de datos
+
+
+HECHAS:
+Ctr+F envia el control al filtro de empleado
+tenes que verificar las fechas, ej. un empleado se toma un mes de vacaciones y a mediados se toma otra licencia.
+limpiar los dateedits en los dialogos
+actualizar la tabla de licencias cuando se agregue una nueva o se edite una existente
+la seleccion de un empleado nuevo ignora el filtro de tipo de licencia
+actualizar el TreeWidget de empleados cuando se agregue, edite o elimine algun empleado
+eliminar las licencias del empleado eliminado
+corregir las tildes y las ñ
+permitir el acceso total a la base de datos al usuario personal
+castear el campo del cuil para extraer el documento
+agregar un boton reiniciar para actualizar la version del programa
+errores al editar las licencias, es capaz de setear una fecha desde mayor a hasta
+no mostrar el documento en el campo cuil si no se cargo

@@ -1,0 +1,7 @@
+determinar todos los archivos del directorio
+compilar los archivos
+volver a determinar todos los archivos del directorio
+eliminar los archivos que no se desean copiar
+copiar los archivos
+eliminar los archivos que se compilaron del directorio original
+

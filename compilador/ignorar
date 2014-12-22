@@ -1,0 +1,8 @@
+*.py
+asd
+tareas
+db/
+compilador/
+*.ui
+v/uiapy
+test/
