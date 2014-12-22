@@ -13,7 +13,7 @@ al seleccionar un empleado realiza una actualizacion a la base de datos
 
 
 HECHAS:
-Ctr+F envia el control al filtro de empleado
+Ctrl+F envia el control al filtro de empleado
 tenes que verificar las fechas, ej. un empleado se toma un mes de vacaciones y a mediados se toma otra licencia.
 limpiar los dateedits en los dialogos
 actualizar la tabla de licencias cuando se agregue una nueva o se edite una existente
