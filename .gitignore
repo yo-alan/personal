@@ -1,3 +1,4 @@
 m/conexion.py
 *.pyc
 tests/
+compilador/
