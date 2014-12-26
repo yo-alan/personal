@@ -1,4 +1,5 @@
 MEJORAS:
+Los setters de los objetos deben lanzar las excepciones.
 Un ingreso de cuil mas intuitivo, en un solo line edit
 crear un logger
 que los empleados y las licencias se puedan cargar con el documento tambien
