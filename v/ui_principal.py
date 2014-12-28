@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/alan/Escritorio/python/MVC/v/ui_principal.ui'
+# Form implementation generated from reading ui file '/home/alan/dev/personal/v/ui_principal.ui'
 #
-# Created: Wed Nov  5 20:57:37 2014
+# Created: Sun Dec 28 15:47:40 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -344,7 +344,7 @@ class Ui_Principal(object):
         self.pbAgregar.setToolTip(QtGui.QApplication.translate("Principal", "Agregar empleado", None, QtGui.QApplication.UnicodeUTF8))
         self.pbBuscar.setToolTip(QtGui.QApplication.translate("Principal", "Detalles de empleado", None, QtGui.QApplication.UnicodeUTF8))
         self.pbAyuda.setToolTip(QtGui.QApplication.translate("Principal", "Ayuda", None, QtGui.QApplication.UnicodeUTF8))
-        self.leEmpleadoFilter.setPlaceholderText(QtGui.QApplication.translate("Principal", "Filtrar por empleado...", None, QtGui.QApplication.UnicodeUTF8))
+        self.leEmpleadoFilter.setPlaceholderText(QtGui.QApplication.translate("Principal", "Filtrar empleados", None, QtGui.QApplication.UnicodeUTF8))
         self.twEmpleados.headerItem().setText(0, QtGui.QApplication.translate("Principal", "Apellido, Nombre (documento)", None, QtGui.QApplication.UnicodeUTF8))
         self.twLicencias.setSortingEnabled(True)
         item = self.twLicencias.horizontalHeaderItem(0)

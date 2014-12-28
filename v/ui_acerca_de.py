@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/alan/Escritorio/python/MVC/v/ui_acerca_de.ui'
+# Form implementation generated from reading ui file '/home/alan/dev/personal/v/ui_acerca_de.ui'
 #
-# Created: Wed Nov  5 20:57:37 2014
+# Created: Sun Dec 28 15:47:40 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
