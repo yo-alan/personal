@@ -1,4 +1,5 @@
 MEJORAS:
+Al iniciar el programa mostrar un mensaje de cargando.
 Los setters de los objetos deben lanzar las excepciones.
 Un ingreso de cuil mas intuitivo, en un solo line edit
 crear un logger

@@ -306,13 +306,18 @@ class Licencia(object):
 	@id_empleado.setter
 	def id_empleado(self, id_empleado):
 		
-		id_empleado = int(id_empleado)
+		try:
+			id_empleado = int(id_empleado)
+			
+			if id_empleado < 1:
+				raise ValueError
+			
+		except ValueError:
+			raise Exception("El empleado no es válido.")
 		
-		if id_empleado < 1 or self._id_empleado == id_empleado:
-			return
-		
-		self._id_empleado = id_empleado
-		self._cambios = True
+		if self._id_empleado != id_empleado:
+			self._id_empleado = id_empleado
+			self._cambios = True
 	
 	@property
 	def desde(self):
@@ -332,13 +337,16 @@ class Licencia(object):
 		elif "-" in desde:
 			anio, mes, dia = desde.split('-')
 		else:
-			return
+			raise Exception("La fecha desde posee un formato no válido.")
 		
 		dia = int(dia)
 		mes = int(mes)
 		anio = int(anio)
 		
-		datetime(anio, mes, dia)
+		try:
+			datetime(anio, mes, dia)
+		except ValueError:
+			raise Exception("La fecha desde no es válida.")
 		
 		dia = str(dia)
 		mes = str(mes)
@@ -376,13 +384,16 @@ class Licencia(object):
 		elif "-" in hasta:
 			anio, mes, dia = hasta.split('-')
 		else:
-			return
+			raise Exception("La fecha hasta posee un formato no válido.")
 		
 		dia = int(dia)
 		mes = int(mes)
 		anio = int(anio)
 		
-		datetime(anio, mes, dia)
+		try:
+			datetime(anio, mes, dia)
+		except ValueError:
+			raise Exception("La fecha hasta no es válida.")
 		
 		dia = str(dia)
 		mes = str(mes)
@@ -409,11 +420,18 @@ class Licencia(object):
 	@dias_tomados.setter
 	def dias_tomados(self, dias_tomados):
 		
-		if self._dias_tomados == dias_tomados:
-			return
+		try:
+			dias_tomados = int(dias_tomados)
+			
+			if dias_tomados < 1:
+				raise ValueError
+			
+		except ValueError:
+			raise Exception("La cantidad de días no es válida.")
 		
-		self._dias_tomados = dias_tomados
-		self._cambios = True
+		if self._dias_tomados != dias_tomados:
+			self._dias_tomados = dias_tomados
+			self._cambios = True
 	
 	@property
 	def tipo(self):
@@ -422,15 +440,19 @@ class Licencia(object):
 	@tipo.setter
 	def tipo(self, tipo):
 		
+		if tipo is None or (isinstance(tipo, str) and tipo == ""):
+			raise Exception("El tipo de licencia es un campo requerido.")
+		
 		tipo = tipo.capitalize()
 		
 		tipos = ['18', '3', '53', '58', 'Comisión', 'Enfermedad', 'Franco', 'Otro']
 		
-		if tipo not in tipos or self._tipo == tipo:
-			return
+		if tipo not in tipos:
+			raise Exception("El tipo de licencia no es válido.")
 		
-		self._tipo = tipo.capitalize()
-		self._cambios = True
+		if self._tipo != tipo:
+			self._tipo = tipo
+			self._cambios = True
 	
 	@property
 	def comentario(self):
