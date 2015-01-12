@@ -329,13 +329,16 @@ class Empleado(object):
 	@documento.setter
 	def documento(self, documento):
 		
-		if (isinstance(documento, str) and documento == "") or documento is None:
-			return
+		if documento is None or (isinstance(documento, str) and documento == ""):
+			raise Exception("El documento no puede estar vacío.")
 		
 		if isinstance(documento, str):
 			documento = int(documento)
 		
-		if self._documento != documento and documento > 1000000 and documento < 99999999:
+		if documento < 1000000 or documento > 99999999:
+			raise Exception("El documento no está en rango del valores permitidos.")
+		
+		if self._documento != documento:
 			self._documento = documento
 			self._cambios = True
 	
@@ -347,7 +350,7 @@ class Empleado(object):
 	def nombre(self, nombre):
 		
 		if not isinstance(nombre, str):
-			return
+			raise Exception("El nombre tiene que ser una cadena de caracteres.")
 		
 		nombre_copia = nombre
 		
@@ -357,6 +360,8 @@ class Empleado(object):
 			
 			if esalfa(n):
 				nombre = nombre + " " + n.capitalize()
+			else:
+				raise Exception("El nombre posee caracteres no permitidos.")
 		
 		if nombre.startswith(' '):
 			nombre = nombre[1:]
@@ -374,7 +379,7 @@ class Empleado(object):
 	def apellido(self, apellido):
 		
 		if not isinstance(apellido, str):
-			return
+			raise Exception("El apellido no es válido.")
 		
 		apellido_copia = apellido
 		
@@ -384,6 +389,8 @@ class Empleado(object):
 			
 			if esalfa(a):
 				apellido = apellido + " " + a.capitalize()
+			else:
+				raise Exception("El apellido posee caracteres no permitidos.")
 		
 		if apellido.startswith(' '):
 			apellido = apellido[1:]
@@ -400,8 +407,8 @@ class Empleado(object):
 	@fecha_nacimiento.setter
 	def fecha_nacimiento(self, fecha_nacimiento):
 		
-		if fecha_nacimiento == "" or fecha_nacimiento is None:
-			return
+		if fecha_nacimiento is None or fecha_nacimiento == "":
+			raise Exception("La fecha de nacimiento no puede estar vacía.")
 		
 		fecha_nacimiento = str(fecha_nacimiento)
 		
@@ -422,7 +429,8 @@ class Empleado(object):
 			if self._fecha_nacimiento != fecha_nacimiento:
 				self._fecha_nacimiento = fecha_nacimiento
 				self._cambios = True
-			
+		else:
+			raise Exception("La fecha de nacimiento no cumple con el formato de una fecha.")
 		
 	@property
 	def genero(self):

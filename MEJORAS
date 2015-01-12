@@ -1,4 +1,6 @@
 MEJORAS:
+Usar unittest para realizar pruebas.
+Crear un entorno de desarrollo conectado con el de produccion.
 Los setters de los objetos deben lanzar las excepciones.
 Un ingreso de cuil mas intuitivo, en un solo line edit
 crear un logger
