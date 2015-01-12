@@ -1,6 +1,10 @@
 MEJORAS:
+<<<<<<< HEAD
 Usar unittest para realizar pruebas.
 Crear un entorno de desarrollo conectado con el de produccion.
+=======
+Al iniciar el programa mostrar un mensaje de cargando.
+>>>>>>> origin/master
 Los setters de los objetos deben lanzar las excepciones.
 Un ingreso de cuil mas intuitivo, en un solo line edit
 crear un logger
