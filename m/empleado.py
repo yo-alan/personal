@@ -290,10 +290,11 @@ class Empleado(object):
 		
 		Conexion.ejecutar(consulta)
 		
+		self._cambios = False
+		
 		if self._nuevo:
 			self._id = Conexion.fetchone()[0]
 			self._nuevo = False
-			self._cambios = False
 		
 		Conexion.cerrar()
 	
@@ -601,7 +602,7 @@ class Empleado(object):
 	@observaciones.setter
 	def observaciones(self, observaciones):
 		
-		if not isinstance(observaciones, str):
+		if observaciones is None or not isinstance(observaciones, str):
 			return
 		
 		if "\"" in observaciones:

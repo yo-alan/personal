@@ -87,6 +87,8 @@ class Editar(QDialog):
 		
 		self.e.cuil = str(self.ui.leCuil.text())
 		
+		self.done(QDialog.Accepted)
+		
 		if '-' in self.e.cuil:
 			try:
 				p, doc, s = self.e.cuil.split('-')
