@@ -9,12 +9,15 @@ from m.empleado import Empleado
 
 class Eliminar(QDialog):
 	
+	principal = None
+	
 	def __init__(self, principal):
 		QDialog.__init__(self, principal)
 		self.ui = Ui_Eliminar()
 		self.ui.setupUi(self)
 		
-		#CODIGO PARA HACER
+		self.principal = principal
+		
 	
 	def center(self):
 		qr = self.frameGeometry()
@@ -51,7 +54,29 @@ class Eliminar(QDialog):
 		
 	def accept(self, ):
 		
-		self.e.eliminar()
+		try:
+			self.e.eliminar()
+			
+			self.principal.ui.lblEmpleado.setText("Apellido, Nombre (documento)")
+			self.principal.ui.txtEObservaciones.setText("")
+			self.principal.ui.txtEObservaciones.setEnabled(False)
+			self.principal.ui.pbEditar.setEnabled(False)
+			self.principal.ui.pbEliminar.setEnabled(False)
+			self.principal.ui.pbLicAgregar.setEnabled(False)
+			self.principal.ui.pbLicEditar.setEnabled(False)
+			self.principal.ui.pbLicEliminar.setEnabled(False)
+			self.principal.ui.aAgregarLicencia.setEnabled(False)
+			self.principal.ui.aEditarLicencia.setEnabled(False)
+			self.principal.ui.aEliminarLicencia.setEnabled(False)
+			
+			for i in range(0, 5):
+				self.principal.ui.twDatosLaborales.setItem(i, 1, QTableWidgetItem())
+			
+			for i in range(0, 7):
+				self.principal.ui.twDatosPersonales.setItem(i, 1, QTableWidgetItem())
+			
+		except Exception as e:
+			print "ERROR!!!", str(e)
 		
 		print "Aceptado"
 		self.done(QDialog.Accepted)
