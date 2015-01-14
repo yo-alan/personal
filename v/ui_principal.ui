@@ -650,11 +650,35 @@
            </layout>
           </item>
           <item>
-           <widget class="QLabel" name="lblObservaciones">
-            <property name="text">
-             <string>Observaciones:</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QLabel" name="lblObservaciones">
+              <property name="text">
+               <string>Observaciones:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pbEditarObservaciones">
+              <property name="text">
+               <string>Editar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QTextEdit" name="txtEObservaciones">

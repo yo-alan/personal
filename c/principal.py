@@ -84,12 +84,9 @@ class Principal(QMainWindow):
 		self.ui.cmbTipoLicencia.currentIndexChanged.connect(lambda : self.cambioTipoLicencia())
 		self.ui.cmbPeriodo.currentIndexChanged.connect(lambda : self.cambioPeriodo())
 		
-		self.ui.txtEObservaciones.textChanged.connect(lambda : self.cambioObservaciones())
-		
 		self.ui.pbAgregar.clicked.connect(lambda : self.agregar.mostrar())
 		self.ui.pbEditar.clicked.connect(lambda : self.editar.mostrar(self))
 		self.ui.pbEliminar.clicked.connect(lambda : self.eliminar.mostrar(self))
-		self.ui.pbBuscar.clicked.connect(lambda : self.buscar.mostrar())
 		
 		self.ui.pbLicAgregar.clicked.connect(lambda : self.lic_agregar.mostrar(self))
 		self.ui.pbLicEditar.clicked.connect(lambda : self.lic_editar.mostrar(self))
@@ -105,6 +102,8 @@ class Principal(QMainWindow):
 		
 		self.agregar.accepted.connect(lambda : self.actualizarTwEmpleados())
 		self.editar.accepted.connect(lambda : self.actualizarTwEmpleados())
+		
+		self.ui.pbEditarObservaciones.clicked.connect(lambda : self.editarObservaciones())
 		
 		#ACCIONES
 		self.ui.aAgregar.triggered.connect(lambda : self.agregar.mostrar())
@@ -128,14 +127,27 @@ class Principal(QMainWindow):
 		
 		self.show()
 	
-	def cambioObservaciones(self, ):
+	def editarObservaciones(self, ):
 		
-		self.e.observaciones = str(self.ui.txtEObservaciones.toPlainText().toUtf8())
+		texto = str(self.ui.pbEditarObservaciones.text())
 		
-		try:
-			self.e.guardar()
-		except Exception as e:
-			print str(e)
+		if texto == "Editar":
+			
+			self.ui.txtEObservaciones.setEnabled(True)
+			
+			self.ui.pbEditarObservaciones.setText("Guardar")
+		else:
+			
+			self.e.observaciones = str(self.ui.txtEObservaciones.toPlainText().toUtf8())
+			
+			try:
+				self.e.guardar()
+				
+				self.ui.txtEObservaciones.setEnabled(False)
+				
+				self.ui.pbEditarObservaciones.setText("Editar")
+			except Exception as e:
+				print str(e)
 	
 	def actualizarTwLicencias(self, bbdd=True, periodo=None):
 		
@@ -254,7 +266,6 @@ class Principal(QMainWindow):
 		self.ui.pbLicAgregar.setEnabled(True)
 		self.ui.pbEliminar.setEnabled(True)
 		self.ui.pbEditar.setEnabled(True)
-		self.ui.txtEObservaciones.setEnabled(True)
 		#self.ui.pbGrupoFamiliar.setEnabled(True)
 		self.ui.aEditar.setEnabled(True)
 		self.ui.aEliminar.setEnabled(True)
