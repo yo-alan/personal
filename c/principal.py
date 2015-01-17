@@ -267,6 +267,7 @@ class Principal(QMainWindow):
 		self.ui.pbEliminar.setEnabled(True)
 		self.ui.pbEditar.setEnabled(True)
 		#self.ui.pbGrupoFamiliar.setEnabled(True)
+		self.ui.pbEditarObservaciones.setEnabled(True)
 		self.ui.aEditar.setEnabled(True)
 		self.ui.aEliminar.setEnabled(True)
 		self.ui.aAgregarLicencia.setEnabled(True)

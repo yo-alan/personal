@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/undercover/personal/v/ui_principal.ui'
+# Form implementation generated from reading ui file '/home/alan/dev/personal/v/ui_principal.ui'
 #
-# Created: Wed Jan 14 13:59:00 2015
+# Created: Sat Jan 17 15:29:33 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -259,6 +259,7 @@ class Ui_Principal(object):
         spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem5)
         self.pbEditarObservaciones = QtGui.QPushButton(self.tDatosLicencias)
+        self.pbEditarObservaciones.setEnabled(False)
         self.pbEditarObservaciones.setObjectName(_fromUtf8("pbEditarObservaciones"))
         self.horizontalLayout_8.addWidget(self.pbEditarObservaciones)
         self.verticalLayout_2.addLayout(self.horizontalLayout_8)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/undercover/personal/v/ui_editar.ui'
+# Form implementation generated from reading ui file '/home/alan/dev/personal/v/ui_editar.ui'
 #
-# Created: Wed Jan 14 13:59:01 2015
+# Created: Sat Jan 17 15:29:33 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!

@@ -673,6 +673,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="pbEditarObservaciones">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="text">
                <string>Editar</string>
               </property>

@@ -10,7 +10,6 @@ Un ingreso de cuil mas intuitivo, en un solo line edit
 crear un logger
 que los empleados y las licencias se puedan cargar con el documento tambien
 arrastrar empleados al tw de licencias
-si es una licencia de tipo 58, los dias no pueden ser mayores a 1
 optimizar el guardado de los valores del campo observacion al empleado
 
 
@@ -27,3 +26,4 @@ permitir el acceso total a la base de datos al usuario personal
 castear el campo del cuil para extraer el documento
 agregar un boton reiniciar para actualizar la version del programa
 no mostrar el documento en el campo cuil si no se cargo
+si es una licencia de tipo 58, los dias no pueden ser mayores a 1
