@@ -6,11 +6,9 @@ Crear un entorno de desarrollo conectado con el de produccion.
 Al iniciar el programa mostrar un mensaje de cargando.
 >>>>>>> origin/master
 Los setters de los objetos deben lanzar las excepciones.
-Un ingreso de cuil mas intuitivo, en un solo line edit
 crear un logger
 que los empleados y las licencias se puedan cargar con el documento tambien
 arrastrar empleados al tw de licencias
-optimizar el guardado de los valores del campo observacion al empleado
 
 
 HECHAS:
@@ -27,3 +25,5 @@ castear el campo del cuil para extraer el documento
 agregar un boton reiniciar para actualizar la version del programa
 no mostrar el documento en el campo cuil si no se cargo
 si es una licencia de tipo 58, los dias no pueden ser mayores a 1
+Un ingreso de cuil mas intuitivo, en un solo line edit
+optimizar el guardado de los valores del campo observacion al empleado

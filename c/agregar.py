@@ -19,6 +19,8 @@ class Agregar(QDialog):
 		
 		self.error = Error(self)
 		
+		self.ui.leCuil.textChanged.connect(lambda : self.cambioCuil())
+		
 		#CODIGO PARA HACER
 	
 	def center(self):
@@ -26,6 +28,20 @@ class Agregar(QDialog):
 		cp = QDesktopWidget().availableGeometry().center()
 		qr.moveCenter(cp)
 		self.move(qr.topLeft())
+	
+	def cambioCuil(self, ):
+		c = str(self.ui.leCuil.text())
+		
+		if len(c) < 8:
+			return
+		elif len(c) > 8 and "-" not in c:
+			c = c[:2] + "-" + c[2:]
+		elif len(c) == 12 and not c.endswith('-') and c[10] != '-':
+			c = c[:11] + "-" + c[11:]
+		elif len(c) == 13 and c[11] != '-':
+			c = c[:12]
+		
+		self.ui.leCuil.setText(c)
 	
 	def mostrar(self, ):
 		
@@ -50,12 +66,18 @@ class Agregar(QDialog):
 		e.cuil = str(self.ui.leCuil.text())
 		
 		if '-' in e.cuil:
+			
+			p = ""
+			doc = ""
+			s = ""
+			
 			try:
 				p, doc, s = e.cuil.split('-')
-				
-				e.documento = doc
-			except:
-				pass
+			except Exception as ex:
+				raise Exception("El cuil no cumple con el formato necesario: " + str(ex))
+			
+			e.documento = doc
+			
 		else:
 			e.documento = e.cuil
 		
