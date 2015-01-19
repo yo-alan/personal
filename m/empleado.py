@@ -334,7 +334,10 @@ class Empleado(object):
 			raise Exception("El documento no puede estar vacío.")
 		
 		if isinstance(documento, str):
-			documento = int(documento)
+			try:
+				documento = int(documento)
+			except ValueError as ex:
+				raise Exception("El número de documento posee caracteres no válidos: " + str(ex))
 		
 		if documento < 1000000 or documento > 99999999:
 			raise Exception("El documento no está en rango del valores permitidos.")
@@ -441,7 +444,7 @@ class Empleado(object):
 	def genero(self, genero):
 		
 		if genero == "" or genero is None:
-			return
+			raise Exception("El género no puede estar vacío.")
 		
 		genero = genero.capitalize()
 		
@@ -450,10 +453,12 @@ class Empleado(object):
 		elif genero == "Masculino":
 			genero = 'M'
 		
-		if (genero == 'F' or genero == 'M') and self._genero != genero:
+		if genero != 'F' and genero != 'M':
+			raise Exception("El género no es valido.")
+		
+		if self._genero != genero:
 			self._genero = genero
 			self._cambios = True
-		
 	
 	@property
 	def domicilio(self):
@@ -480,7 +485,7 @@ class Empleado(object):
 	def telefono(self, telefono):
 		
 		if telefono is None:
-			return
+			telefono = ""
 		
 		if self._telefono != str(telefono):
 			self._telefono = str(telefono)
@@ -494,7 +499,7 @@ class Empleado(object):
 	def fecha_ingreso(self, fecha_ingreso):
 		
 		if fecha_ingreso == "" or fecha_ingreso is None:
-			return
+			raise Exception("La fecha de ingreso no puede estar vacía.")
 		
 		fecha_ingreso = str(fecha_ingreso)
 		
@@ -515,6 +520,8 @@ class Empleado(object):
 			if self._fecha_ingreso != fecha_ingreso:
 				self._fecha_ingreso = fecha_ingreso
 				self._cambios = True
+		else:
+			raise Exception("La fecha de ingreso no cumple con el formato de una fecha.")
 	
 	@property
 	def cuil(self):
@@ -523,18 +530,23 @@ class Empleado(object):
 	@cuil.setter
 	def cuil(self, cuil):
 		
-		if cuil is None:
+		if cuil is None or len(cuil) < 9:
 			cuil = ""
 		
-		try:
-			pre = cuil[:2]
-			doc = cuil[3:11]
-			suf = cuil[12:]
-			
-			if (int(doc) < 1000000 or int(doc) > 99999999) and self.documento != int(doc):
-				cuil = ""
-		except:
-			cuil = ""
+		if cuil != "" and '-' in cuil:
+			try:
+				pre = cuil[:2]
+				doc = cuil[3:11]
+				suf = cuil[12:]
+				
+				if cuil[2] != '-' or cuil[11] != '-':
+					raise
+				
+				if (int(doc) < 1000000 or int(doc) > 99999999) and self.documento != int(doc):
+					cuil = ""
+				
+			except Exception as ex:
+				raise Exception("El formato del número de cuil no es válido: " + str(cuil))
 		
 		if self._cuil != cuil or (cuil == "" and self._cuil != ""):
 			self._cuil = cuil
@@ -548,20 +560,21 @@ class Empleado(object):
 	def nro_legajo(self, nro_legajo):
 		
 		if nro_legajo is None:
-			return
+			raise Exception("El número de legajo no puede estar vacío.")
 		
 		if isinstance(nro_legajo, str):
 			
 			if not nro_legajo.isdigit():
-				return
+				raise Exception("El número de legajo tiene caracteres no válidos.")
 			
 			nro_legajo = int(nro_legajo)
 		
-		if nro_legajo < 1 or nro_legajo == self._nro_legajo:
-			return
+		if nro_legajo < 1:
+			raise Exception("El número de legajo no puede ser menor a 1")
 		
-		self._nro_legajo = nro_legajo
-		self._cambios = True
+		if self._nro_legajo != nro_legajo:
+			self._nro_legajo = nro_legajo
+			self._cambios = True
 	
 	@property
 	def sit_revista(self):
@@ -570,12 +583,15 @@ class Empleado(object):
 	@sit_revista.setter
 	def sit_revista(self, sit_revista):
 		
-		if sit_revista is None:
-			return
+		if not isinstance(sit_revista, str):
+			raise Exception("La situación de revista no puede estar vacía.")
 		
 		situaciones = ['Transitoria', 'Temporaria', 'Permanente', 'Pasantía', 'Comisión']
 		
-		if sit_revista.capitalize() in situaciones and sit_revista.capitalize() != self._sit_revista:
+		if not sit_revista.capitalize() in situaciones:
+			raise Exception("La situación de revista no corresponde a un valor disponible.")
+		
+		if sit_revista.capitalize() != self._sit_revista:
 			self._sit_revista = sit_revista.capitalize()
 			self._cambios = True
 	
@@ -587,11 +603,14 @@ class Empleado(object):
 	def cargo(self, cargo):
 		
 		if not isinstance(cargo, str):
-			return
+			raise Exception("El cargo no puede estar vacío.")
 		
 		cargos = ['Administrativo', 'Jerárquico', 'Obrero', 'Profesional', 'Servicio']
 		
-		if cargo.capitalize() in cargos and cargo.capitalize() != self._cargo:
+		if not cargo.capitalize() in cargos:
+			raise Exception("El cargo no corresponde a un valor disponible.")
+		
+		if cargo.capitalize() != self._cargo:
 			self._cargo = cargo.capitalize()
 			self._cambios = True
 	
@@ -602,7 +621,7 @@ class Empleado(object):
 	@observaciones.setter
 	def observaciones(self, observaciones):
 		
-		if observaciones is None or not isinstance(observaciones, str):
+		if not isinstance(observaciones, str):
 			return
 		
 		if "\"" in observaciones:

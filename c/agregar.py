@@ -60,39 +60,38 @@ class Agregar(QDialog):
 		self.done(QDialog.Rejected)
 	
 	def accept(self, ):
-		
-		e = Empleado()
-		
-		e.cuil = str(self.ui.leCuil.text())
-		
-		if '-' in e.cuil:
-			
-			p = ""
-			doc = ""
-			s = ""
-			
-			try:
-				p, doc, s = e.cuil.split('-')
-			except Exception as ex:
-				raise Exception("El cuil no cumple con el formato necesario: " + str(ex))
-			
-			e.documento = doc
-			
-		else:
-			e.documento = e.cuil
-		
-		e.nombre = str(self.ui.leNombre.text().toUtf8())
-		e.apellido = str(self.ui.leApellido.text().toUtf8())
-		e.fecha_nacimiento = str(self.ui.deFechaNacimiento.text())
-		e.genero = str(self.ui.cmbGenero.currentText())
-		e.domicilio = str(self.ui.leDomicilio.text().toUtf8())
-		e.telefono = str(self.ui.leTelefono.text())
-		e.fecha_ingreso = str(self.ui.deFechaIngreso.text())
-		e.nro_legajo = str(self.ui.sbNroLegajo.text())
-		e.sit_revista = str(self.ui.cmbRevista.currentText().toUtf8())
-		e.cargo = str(self.ui.cmbCargo.currentText().toUtf8())
-		
 		try:
+			e = Empleado()
+			
+			e.cuil = str(self.ui.leCuil.text())
+			
+			if '-' in e.cuil:
+				
+				p = ""
+				doc = ""
+				s = ""
+				
+				try:
+					p, doc, s = e.cuil.split('-')
+				except Exception as ex:
+					raise Exception("El cuil no cumple con el formato necesario: " + str(ex))
+				
+				e.documento = doc
+				
+			else:
+				e.documento = str(self.ui.leCuil.text())
+			
+			e.nombre = str(self.ui.leNombre.text().toUtf8())
+			e.apellido = str(self.ui.leApellido.text().toUtf8())
+			e.fecha_nacimiento = str(self.ui.deFechaNacimiento.text())
+			e.genero = str(self.ui.cmbGenero.currentText())
+			e.domicilio = str(self.ui.leDomicilio.text().toUtf8())
+			e.telefono = str(self.ui.leTelefono.text())
+			e.fecha_ingreso = str(self.ui.deFechaIngreso.text())
+			e.nro_legajo = str(self.ui.sbNroLegajo.text())
+			e.sit_revista = str(self.ui.cmbRevista.currentText().toUtf8())
+			e.cargo = str(self.ui.cmbCargo.currentText().toUtf8())
+			
 			e.guardar()
 			
 			self.limpiar()

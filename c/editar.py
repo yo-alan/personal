@@ -106,12 +106,18 @@ class Editar(QDialog):
 		self.done(QDialog.Accepted)
 		
 		if '-' in self.e.cuil:
+			
+			p = ""
+			doc = ""
+			s = ""
+			
 			try:
 				p, doc, s = self.e.cuil.split('-')
-				
-				self.e.documento = doc
-			except:
-				pass
+			except Exception as ex:
+				raise Exception("El cuil no cumple con el formato necesario: " + str(ex))
+			
+			self.e.documento = doc
+			
 		else:
 			self.e.documento = self.e.cuil
 		
