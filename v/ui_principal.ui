@@ -737,6 +737,8 @@
     <addaction name="aAgregarLicencia"/>
     <addaction name="aEditarLicencia"/>
     <addaction name="aEliminarLicencia"/>
+    <addaction name="separator"/>
+    <addaction name="aGenerarGrafico"/>
    </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuEmpleado"/>
@@ -816,6 +818,14 @@
    </property>
    <property name="text">
     <string>Grupo familiar</string>
+   </property>
+  </action>
+  <action name="aGenerarGrafico">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Generar gráfico</string>
    </property>
   </action>
  </widget>

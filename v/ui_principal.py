@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/alan/dev/personal/v/ui_principal.ui'
 #
-# Created: Sat Jan 17 15:29:33 2015
+# Created: Mon Jan 19 20:16:07 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -312,6 +312,9 @@ class Ui_Principal(object):
         self.actionGrupo_familiar = QtGui.QAction(Principal)
         self.actionGrupo_familiar.setEnabled(False)
         self.actionGrupo_familiar.setObjectName(_fromUtf8("actionGrupo_familiar"))
+        self.aGenerarGrafico = QtGui.QAction(Principal)
+        self.aGenerarGrafico.setEnabled(False)
+        self.aGenerarGrafico.setObjectName(_fromUtf8("aGenerarGrafico"))
         self.menuArchivo.addAction(self.aReiniciar)
         self.menuArchivo.addAction(self.aSalir)
         self.menuAyuda.addAction(self.aAcerca_de)
@@ -323,6 +326,8 @@ class Ui_Principal(object):
         self.menuLicencia.addAction(self.aAgregarLicencia)
         self.menuLicencia.addAction(self.aEditarLicencia)
         self.menuLicencia.addAction(self.aEliminarLicencia)
+        self.menuLicencia.addSeparator()
+        self.menuLicencia.addAction(self.aGenerarGrafico)
         self.menubar.addAction(self.menuArchivo.menuAction())
         self.menubar.addAction(self.menuEmpleado.menuAction())
         self.menubar.addAction(self.menuLicencia.menuAction())
@@ -427,4 +432,5 @@ class Ui_Principal(object):
         self.aEditarLicencia.setText(QtGui.QApplication.translate("Principal", "Editar", None, QtGui.QApplication.UnicodeUTF8))
         self.aEliminarLicencia.setText(QtGui.QApplication.translate("Principal", "Eliminar", None, QtGui.QApplication.UnicodeUTF8))
         self.actionGrupo_familiar.setText(QtGui.QApplication.translate("Principal", "Grupo familiar", None, QtGui.QApplication.UnicodeUTF8))
+        self.aGenerarGrafico.setText(QtGui.QApplication.translate("Principal", "Generar gráfico", None, QtGui.QApplication.UnicodeUTF8))
 

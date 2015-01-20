@@ -56,6 +56,7 @@ class Principal(QMainWindow):
 	e = None
 	empleados = []
 	licencias = []
+	mensaje_estado = None
 	
 	def __init__(self, ):
 		QMainWindow.__init__(self, None)
@@ -73,6 +74,10 @@ class Principal(QMainWindow):
 		self.lic_buscar = Lic_Buscar(self)
 		
 		self.acerca_de = Acerca_de(self)
+		
+		self.ui.twEmpleados.itemClicked.connect(lambda : self.empleadosSeleccionado())
+		
+		self.ui.twLicencias.itemClicked.connect(lambda : self.licenciasSeleccionado())
 		
 		self.ui.leEmpleadoFilter.textChanged.connect(lambda : self.actualizarTwEmpleados())
 		
@@ -126,6 +131,14 @@ class Principal(QMainWindow):
 		self.cargarEmpleados()
 		
 		self.show()
+	
+	def empleadosSeleccionado(self, ):
+		
+		self.estado("Empleados: " + str(len(self.empleados)) + " en total.")
+	
+	def licenciasSeleccionado(self, ):
+		
+		self.estado("Licencias: " + str(len(self.licencias)) + " en total.")
 	
 	def editarObservaciones(self, ):
 		
@@ -369,9 +382,11 @@ class Principal(QMainWindow):
 	
 	def estado(self, msg):
 		
-		estado = QLabel()
-		estado.setText(msg.decode('utf-8'))
-		self.ui.statusBar.addWidget(estado, 0)
+		self.ui.statusBar.removeWidget(self.mensaje_estado)
+		
+		self.mensaje_estado = QLabel()
+		self.mensaje_estado.setText(msg.decode('utf-8'))
+		self.ui.statusBar.addWidget(self.mensaje_estado, 0)
 	
 	def cargarEmpleados(self, ):
 		
