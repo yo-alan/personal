@@ -100,39 +100,37 @@ class Editar(QDialog):
 		self.done(QDialog.Rejected)
 		
 	def accept(self, ):
-		
-		self.e.cuil = str(self.ui.leCuil.text())
-		
-		self.done(QDialog.Accepted)
-		
-		if '-' in self.e.cuil:
-			
-			p = ""
-			doc = ""
-			s = ""
-			
-			try:
-				p, doc, s = self.e.cuil.split('-')
-			except Exception as ex:
-				raise Exception("El cuil no cumple con el formato necesario: " + str(ex))
-			
-			self.e.documento = doc
-			
-		else:
-			self.e.documento = self.e.cuil
-		
-		self.e.nombre = str(self.ui.leNombre.text().toUtf8())
-		self.e.apellido = str(self.ui.leApellido.text().toUtf8())
-		self.e.fecha_nacimiento = str(self.ui.deFechaNacimiento.text())
-		self.e.genero = str(self.ui.cmbGenero.currentText())
-		self.e.domicilio = str(self.ui.leDomicilio.text().toUtf8())
-		self.e.telefono = str(self.ui.leTelefono.text())
-		self.e.fecha_ingreso = str(self.ui.deFechaIngreso.text())
-		self.e.nro_legajo = str(self.ui.sbNroLegajo.text())
-		self.e.sit_revista = str(self.ui.cmbRevista.currentText().toUtf8())
-		self.e.cargo = str(self.ui.cmbCargo.currentText().toUtf8())
-		
 		try:
+			self.e.cuil = str(self.ui.leCuil.text())
+			
+			if '-' in self.e.cuil:
+				
+				p = ""
+				doc = ""
+				s = ""
+				
+				try:
+					p, doc, s = self.e.cuil.split('-')
+				except Exception as ex:
+					raise Exception("El cuil no cumple con el formato necesario: " + str(ex))
+				
+				self.e.documento = doc
+				
+			else:
+				self.e.documento = str(self.ui.leCuil.text())
+			
+			self.e.nombre = str(self.ui.leNombre.text().toUtf8())
+			self.e.apellido = str(self.ui.leApellido.text().toUtf8())
+			self.e.fecha_nacimiento = str(self.ui.deFechaNacimiento.text())
+			self.e.genero = str(self.ui.cmbGenero.currentText())
+			self.e.domicilio = str(self.ui.leDomicilio.text().toUtf8())
+			self.e.telefono = str(self.ui.leTelefono.text())
+			self.e.fecha_ingreso = str(self.ui.deFechaIngreso.text())
+			self.e.nro_legajo = str(self.ui.sbNroLegajo.text())
+			self.e.sit_revista = str(self.ui.cmbRevista.currentText().toUtf8())
+			self.e.cargo = str(self.ui.cmbCargo.currentText().toUtf8())
+			
+			
 			self.e.guardar()
 			
 			self.limpiar()

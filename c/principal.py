@@ -394,7 +394,7 @@ class Principal(QMainWindow):
 			self.empleados = Empleado.empleados()
 		except Exception as ex:
 			print ex
-			self.estado("Ha ocurrido un error, no existe una conexion a la base de datos.")
+			self.estado("Ha ocurrido un error, no existe una conexión a la base de datos.")
 		
 		self.actualizarTwEmpleados()
 	
