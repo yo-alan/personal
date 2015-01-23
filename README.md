@@ -11,14 +11,14 @@ La administración de los empleados posee las siguientes opciones:
 * Óptimo filtrado de empleados que mejora la búsqueda.
 
 ## *Licencias:*
-Entre las opciones que brinda el módulo de licencias se contemplan las restricciones correspondientes a cada carga/edición, las opciones son:
+Entre las opciones que brinda el módulo de licencias se aplican las restricciones correspondientes a cada carga/edición, las opciones son:
 * Agregar una licencia a un empleado. 
 * Eliminar una licencia.
 * Editar una licencia.
-* Generación de un gráfico de torta mostrando los porcentajes de cada tipo de licencias tomadas.
+* Generación de un gráfico de torta mostrando los porcentajes de cada tipo de licencias tomadas (En desarrollo).
 * Búsqueda de licencias por empleado óptima, filtrado por tipo y período.
 
 ## *Especificaciones técnicas:*
 * Python 2.7 como lenguaje de programación.
 * PyQt4 como interfaz gráfica.
-* PostgreSQL como manejador de BBDD.
+* PostgreSQL 9.1 como manejador de BBDD.

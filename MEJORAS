@@ -1,29 +1,28 @@
 MEJORAS:
-<<<<<<< HEAD
-Usar unittest para realizar pruebas.
+========
 Crear un entorno de desarrollo conectado con el de produccion.
-=======
 Al iniciar el programa mostrar un mensaje de cargando.
->>>>>>> origin/master
-Los setters de los objetos deben lanzar las excepciones.
-crear un logger
-que los empleados y las licencias se puedan cargar con el documento tambien
-arrastrar empleados al tw de licencias
+Crear un logger
+Que los empleados y las licencias se puedan cargar con el documento tambien
+Arrastrar empleados al tw de licencias
 
 
 HECHAS:
+=======
 Ctrl+F envia el control al filtro de empleado
-verificar las fechas, ej. un empleado se toma un mes de vacaciones y a mediados se toma otra licencia.
-limpiar los dateedits en los dialogos
-actualizar la tabla de licencias cuando se agregue una nueva o se edite una existente
-la seleccion de un empleado nuevo ignora el filtro de tipo de licencia
-actualizar el TreeWidget de empleados cuando se agregue, edite o elimine algun empleado
-eliminar las licencias del empleado eliminado
-corregir las tildes y las ñ
-permitir el acceso total a la base de datos al usuario personal
-castear el campo del cuil para extraer el documento
-agregar un boton reiniciar para actualizar la version del programa
-no mostrar el documento en el campo cuil si no se cargo
-si es una licencia de tipo 58, los dias no pueden ser mayores a 1
+Verificar las fechas, ej. un empleado se toma un mes de vacaciones y a mediados se toma otra licencia.
+Limpiar los dateedits en los dialogos
+Actualizar la tabla de licencias cuando se agregue una nueva o se edite una existente
+La seleccion de un empleado nuevo ignora el filtro de tipo de licencia
+Actualizar el TreeWidget de empleados cuando se agregue, edite o elimine algun empleado
+Eliminar las licencias del empleado eliminado
+Corregir las tildes y las ñ
+Permitir el acceso total a la base de datos al usuario personal
+Castear el campo del cuil para extraer el documento
+Agregar un boton reiniciar para actualizar la version del programa
+No mostrar el documento en el campo cuil si no se cargo
+Si es una licencia de tipo 58, los dias no pueden ser mayores a 1
 Un ingreso de cuil mas intuitivo, en un solo line edit
-optimizar el guardado de los valores del campo observacion al empleado
+Optimizar el guardado de los valores del campo observacion al empleado
+Usar unittest para realizar pruebas.
+Los setters de los objetos deben lanzar las excepciones.
