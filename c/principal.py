@@ -86,8 +86,8 @@ class Principal(QMainWindow):
 		self.ui.twLicencias.itemDoubleClicked.connect(lambda : self.lic_editar.mostrar(self))
 		self.ui.twLicencias.cellClicked.connect(lambda : self.licenciasCellClicked())
 		
-		self.ui.cmbTipoLicencia.currentIndexChanged.connect(lambda : self.cambioTipoLicencia())
-		self.ui.cmbPeriodo.currentIndexChanged.connect(lambda : self.cambioPeriodo())
+		self.ui.cmbTipoLicencia.currentIndexChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cmbPeriodo.currentIndexChanged.connect(lambda : self.actualizarTwLicencias(False))
 		
 		self.ui.pbAgregar.clicked.connect(lambda : self.agregar.mostrar())
 		self.ui.pbEditar.clicked.connect(lambda : self.editar.mostrar(self))
@@ -162,7 +162,7 @@ class Principal(QMainWindow):
 			except Exception as e:
 				print str(e)
 	
-	def actualizarTwLicencias(self, bbdd=True, periodo=None):
+	def actualizarTwLicencias(self, bbdd=True, ):
 		
 		self.ui.twLicencias.setRowCount(0)
 		
@@ -177,6 +177,21 @@ class Principal(QMainWindow):
 			return
 		
 		resultado = []
+		
+		p = str(self.ui.cmbPeriodo.currentText().toUtf8())
+		
+		anio, mes, dia = fecha_actual().split('-')
+		
+		periodo = None
+		
+		if p == "Última semana":
+			actual = datetime.datetime(int(anio), int(mes), int(dia))
+			
+			periodo = datetime.datetime(int(anio), int(mes), int(dia) - actual.weekday())
+		elif p == "Último mes":
+			periodo = datetime.datetime(int(anio), int(mes), 1)
+		elif p == "Último año":
+			periodo = datetime.datetime(int(anio), 1, 1)
 		
 		for l in self.licencias:
 			
@@ -222,32 +237,6 @@ class Principal(QMainWindow):
 			i = i + 1
 			rows = rows + 1
 		
-	
-	def cambioPeriodo(self, ):
-		
-		periodo = str(self.ui.cmbPeriodo.currentText().toUtf8())
-		
-		anio, mes, dia = fecha_actual().split('-')
-		
-		p = None
-		
-		if periodo == "Última semana":
-			actual = datetime.datetime(int(anio), int(mes), int(dia))
-			
-			p = datetime.datetime(int(anio), int(mes), int(dia) - actual.weekday())
-		elif periodo == "Último mes":
-			p = datetime.datetime(int(anio), int(mes), 1)
-		elif periodo == "Último año":
-			p = datetime.datetime(int(anio), 1, 1)
-		
-		self.actualizarTwLicencias(False, p)
-	
-	def cambioTipoLicencia(self, ):
-		
-		self.ui.pbLicEditar.setEnabled(False)
-		self.ui.pbLicEliminar.setEnabled(False)
-		
-		self.actualizarTwLicencias(False)
 	
 	def licenciasCellClicked(self, ):
 		
