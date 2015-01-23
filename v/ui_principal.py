@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/undercover/personal/v/ui_principal.ui'
 #
-# Created: Fri Jan 23 09:07:23 2015
+# Created: Fri Jan 23 13:09:52 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -424,7 +424,7 @@ class Ui_Principal(object):
         self.aSalir.setShortcut(QtGui.QApplication.translate("Principal", "Alt+F4", None, QtGui.QApplication.UnicodeUTF8))
         self.aReiniciar.setText(QtGui.QApplication.translate("Principal", "Reiniciar", None, QtGui.QApplication.UnicodeUTF8))
         self.aReiniciar.setShortcut(QtGui.QApplication.translate("Principal", "Ctrl+Shift+R", None, QtGui.QApplication.UnicodeUTF8))
-        self.aAcerca_de.setText(QtGui.QApplication.translate("Principal", "Acerca de", None, QtGui.QApplication.UnicodeUTF8))
+        self.aAcerca_de.setText(QtGui.QApplication.translate("Principal", "Acerca de...", None, QtGui.QApplication.UnicodeUTF8))
         self.aAgregar.setText(QtGui.QApplication.translate("Principal", "Agregar", None, QtGui.QApplication.UnicodeUTF8))
         self.aEditar.setText(QtGui.QApplication.translate("Principal", "Editar", None, QtGui.QApplication.UnicodeUTF8))
         self.aEliminar.setText(QtGui.QApplication.translate("Principal", "Eliminar", None, QtGui.QApplication.UnicodeUTF8))

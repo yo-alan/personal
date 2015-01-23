@@ -764,7 +764,7 @@
   </action>
   <action name="aAcerca_de">
    <property name="text">
-    <string>Acerca de</string>
+    <string>Acerca de...</string>
    </property>
   </action>
   <action name="aAgregar">

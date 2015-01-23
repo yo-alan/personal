@@ -6,12 +6,14 @@ from PyQt4.QtCore import *
 
 from v.ui_error import Ui_Error
 
-class Error(QDialog):
+class Error(QMessageBox):
 	
 	def __init__(self, principal):
-		QDialog.__init__(self, principal)
+		QMessageBox.__init__(self, principal)
 		self.ui = Ui_Error()
 		self.ui.setupUi(self)
+		
+		self.setIcon(QMessageBox.Warning)
 		
 		#CODIGO PARA HACER
 	
@@ -23,16 +25,10 @@ class Error(QDialog):
 	
 	def mostrar(self, ):
 		
-		self.center()
+		self.exec_()
 		
-		self.show()
+		self.center()
 	
 	def closeEvent(self, event):
 		pass
-	
-	def reject(self, ):
-		self.done(QDialog.Rejected)
-	
-	def accept(self, ):
-		self.done(QDialog.Accepted)
 	

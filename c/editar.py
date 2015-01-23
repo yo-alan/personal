@@ -135,11 +135,12 @@ class Editar(QDialog):
 			
 			self.limpiar()
 			
-		except Exception as e:
-			print e
-		
-		print "Aceptado"
-		self.done(QDialog.Accepted)
+			self.done(QDialog.Accepted)
+			
+		except Exception as ex:
+			self.error.setText("Ha ocurrido un mientras intentaba editar un empleado.".decode('utf-8'))
+			self.error.setDetailedText(str(ex).decode('utf-8'))
+			self.error.mostrar()
 	
 	def limpiar(self, ):
 		

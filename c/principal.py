@@ -10,11 +10,9 @@ from v.ui_principal import Ui_Principal
 from c.agregar import Agregar
 from c.editar import Editar
 from c.eliminar import Eliminar
-from c.buscar import Buscar
 from c.lic_agregar import Lic_Agregar
 from c.lic_editar import Lic_Editar
 from c.lic_eliminar import Lic_Eliminar
-from c.lic_buscar import Lic_Buscar
 from c.acerca_de import Acerca_de
 
 from m.empleado import Empleado
@@ -43,12 +41,10 @@ def reiniciar():
 
 class Principal(QMainWindow):
 	
-	buscar = None
 	editar = None
 	eliminar = None
 	agregar = None
 	
-	lic_buscar = None
 	lic_editar = None
 	lic_eliminar = None
 	lic_agregar = None
@@ -66,12 +62,10 @@ class Principal(QMainWindow):
 		self.agregar = Agregar(self)
 		self.editar = Editar(self)
 		self.eliminar = Eliminar(self)
-		self.buscar = Buscar(self)
 		
 		self.lic_agregar = Lic_Agregar(self)
 		self.lic_editar = Lic_Editar(self)
 		self.lic_eliminar = Lic_Eliminar(self)
-		self.lic_buscar = Lic_Buscar(self)
 		
 		self.acerca_de = Acerca_de(self)
 		

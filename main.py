@@ -30,9 +30,14 @@ def fin():
 
 def main():
 	
-	app = QApplication(sys.argv)
-	p = Principal()
-	p.mostrar()
+	try:
+		app = QApplication(sys.argv)
+		p = Principal()
+		p.mostrar()
+	except Exception as ex:
+		print ex
+		fin()
+		exit(1)
 	
 	return app.exec_()
 

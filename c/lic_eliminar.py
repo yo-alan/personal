@@ -52,7 +52,6 @@ class Lic_Eliminar(QDialog):
 	
 	def reject(self, ):
 		
-		print "Cancelado"
 		self.done(QDialog.Rejected)
 	
 	def accept(self, ):
@@ -60,10 +59,10 @@ class Lic_Eliminar(QDialog):
 		try:
 			self.l.eliminar()
 			
-			print "Aceptado"
 			self.done(QDialog.Accepted)
 			
-		except Exception as e:
-			self.error.ui.lblMensaje.setText(str(e).decode('utf-8'))
+		except Exception as ex:
+			self.error.setText("Ha ocurrido un mientras intentaba eliminar una licencia.".decode('utf-8'))
+			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 		

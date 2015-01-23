@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/undercover/personal/v/ui_eliminar.ui'
 #
-# Created: Fri Jan 23 09:07:23 2015
+# Created: Fri Jan 23 13:09:52 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!

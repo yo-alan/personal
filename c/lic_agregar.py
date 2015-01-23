@@ -72,42 +72,42 @@ class Lic_Agregar(QDialog):
 		
 		self.limpiar()
 		
-		print "Cancelado"
 		self.done(QDialog.Rejected)
 	
 	def accept(self, ):
 		
-		empleado = str(self.ui.groupBox.title().toUtf8())
-		
-		documento = empleado.split('(')[1]
-		
-		documento = documento[:-1]
-		
-		e = Empleado.empleado(documento)
-		
-		tipo = self.ui.cmbTipoLicencia.currentText().toUtf8()
-		desde = self.ui.deDesde.text()
-		hasta = self.ui.deHasta.text()
-		comentario = self.ui.leComentario.text().toUtf8()
-		
-		l = Licencia()
-		
-		l.id_empleado = e.id
-		l.tipo = str(tipo)
-		l.desde = str(desde)
-		l.hasta = str(hasta)
-		l.comentario = str(comentario)
-		
 		try:
+			empleado = str(self.ui.groupBox.title().toUtf8())
+			
+			documento = empleado.split('(')[1]
+			
+			documento = documento[:-1]
+			
+			e = Empleado.empleado(documento)
+			
+			tipo = self.ui.cmbTipoLicencia.currentText().toUtf8()
+			desde = self.ui.deDesde.text()
+			hasta = self.ui.deHasta.text()
+			comentario = self.ui.leComentario.text().toUtf8()
+			
+			l = Licencia()
+			
+			l.id_empleado = e.id
+			l.tipo = str(tipo)
+			l.desde = str(desde)
+			l.hasta = str(hasta)
+			l.comentario = str(comentario)
+			
+			
 			l.guardar()
 			
 			self.limpiar()
 			
-			print "Aceptado"
 			self.done(QDialog.Accepted)
 			
-		except Exception as e:
-			self.error.ui.lblMensaje.setText(str(e).decode('utf-8'))
+		except Exception as ex:
+			self.error.setText("Ha ocurrido un mientras intentaba agregar un licencia nueva.".decode('utf-8'))
+			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 	
 	def limpiar(self, ):

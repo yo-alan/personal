@@ -46,10 +46,6 @@ class Eliminar(QDialog):
 		pass
 	
 	def reject(self, ):
-		
-		
-		
-		print "Cancelado"
 		self.done(QDialog.Rejected)
 		
 	def accept(self, ):
@@ -75,9 +71,9 @@ class Eliminar(QDialog):
 			for i in range(0, 7):
 				self.principal.ui.twDatosPersonales.setItem(i, 1, QTableWidgetItem())
 			
-		except Exception as e:
-			print "ERROR!!!", str(e)
-		
-		print "Aceptado"
-		self.done(QDialog.Accepted)
-	
+			self.done(QDialog.Accepted)
+			
+		except Exception as ex:
+			self.error.setText("Ha ocurrido un mientras intentaba eliminar un empleado.".decode('utf-8'))
+			self.error.setDetailedText(str(ex).decode('utf-8'))
+			self.error.mostrar()

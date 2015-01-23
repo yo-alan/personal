@@ -97,31 +97,32 @@ class Lic_Editar(QDialog):
 		
 		self.limpiar()
 		
-		print "Cancelado"
 		self.done(QDialog.Rejected)
 	
 	def accept(self, ):
 		
-		tipo = self.ui.cmbTipoLicencia.currentText().toUtf8()
-		desde = self.ui.deDesde.text()
-		hasta = self.ui.deHasta.text()
-		comentario = self.ui.leComentario.text().toUtf8()
-		
-		self.l.tipo = str(tipo)
-		self.l.desde = str(desde)
-		self.l.hasta = str(hasta)
-		self.l.comentario = str(comentario)
-		
 		try:
+		
+			tipo = self.ui.cmbTipoLicencia.currentText().toUtf8()
+			desde = self.ui.deDesde.text()
+			hasta = self.ui.deHasta.text()
+			comentario = self.ui.leComentario.text().toUtf8()
+			
+			self.l.tipo = str(tipo)
+			self.l.desde = str(desde)
+			self.l.hasta = str(hasta)
+			self.l.comentario = str(comentario)
+			
+			
 			self.l.guardar()
 			
 			self.limpiar()
 			
-			print "Aceptado"
 			self.done(QDialog.Accepted)
 			
-		except Exception as e:
-			self.error.ui.lblMensaje.setText(str(e).decode('utf-8'))
+		except Exception as ex:
+			self.error.setText("Ha ocurrido un mientras intentaba editar una licencia.".decode('utf-8'))
+			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 	
 	def limpiar(self, ):

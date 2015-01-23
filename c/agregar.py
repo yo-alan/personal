@@ -56,7 +56,6 @@ class Agregar(QDialog):
 		
 		self.limpiar()
 		
-		print "Cancelado"
 		self.done(QDialog.Rejected)
 	
 	def accept(self, ):
@@ -96,11 +95,11 @@ class Agregar(QDialog):
 			
 			self.limpiar()
 			
-			print "Aceptado"
 			self.done(QDialog.Accepted)
 			
-		except Exception as e:
-			self.error.ui.lblMensaje.setText(str(e).decode('utf-8'))
+		except Exception as ex:
+			self.error.setText("Ha ocurrido un mientras intentaba agregar un empleado nuevo.".decode('utf-8'))
+			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 	
 	def limpiar(self, ):
