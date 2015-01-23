@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/alan/dev/personal/v/ui_editar.ui'
+# Form implementation generated from reading ui file '/home/undercover/personal/v/ui_editar.ui'
 #
-# Created: Mon Jan 19 20:16:07 2015
+# Created: Fri Jan 23 09:07:24 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,11 +17,10 @@ except AttributeError:
 class Ui_Editar(object):
     def setupUi(self, Editar):
         Editar.setObjectName(_fromUtf8("Editar"))
-        Editar.resize(540, 312)
-        Editar.setMinimumSize(QtCore.QSize(540, 312))
-        Editar.setMaximumSize(QtCore.QSize(540, 312))
+        Editar.resize(522, 324)
         Editar.setModal(True)
         self.verticalLayout = QtGui.QVBoxLayout(Editar)
+        self.verticalLayout.setSizeConstraint(QtGui.QLayout.SetFixedSize)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))

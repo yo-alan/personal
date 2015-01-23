@@ -2,3 +2,4 @@ m/conexion.py
 *.pyc
 tests/
 compilador/
+config/personal.pid
