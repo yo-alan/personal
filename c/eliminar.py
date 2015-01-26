@@ -21,8 +21,8 @@ class Eliminar(QMessageBox):
 		
 		self.error = Error(self)
 		
-		self.setText("¿Estás seguro de querer eliminar este empleado?".decode('utf-8'))
-		self.setDetailedText("Esta acción no se puede deshacer.".decode('utf-8'))
+		self.setText("<b>¿Estás seguro de querer eliminar este empleado?</b>".decode('utf-8'))
+		self.setInformativeText("Esta acción no se puede deshacer.".decode('utf-8'))
 		
 		self.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
 		self.button(QMessageBox.Ok).clicked.connect(lambda : self.accept())
@@ -55,6 +55,8 @@ class Eliminar(QMessageBox):
 		
 		self.setDefaultButton(QMessageBox.Ok)
 		
+		self.setDetailedText(empleado.decode('utf-8'))
+		
 		self.show()
 	
 	def closeEvent(self, event):
@@ -62,7 +64,7 @@ class Eliminar(QMessageBox):
 	
 	def reject(self, ):
 		self.done(QDialog.Rejected)
-		
+	
 	def accept(self, ):
 		
 		try:

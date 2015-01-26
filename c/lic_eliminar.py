@@ -19,8 +19,8 @@ class Lic_Eliminar(QMessageBox):
 		
 		self.error = Error(self)
 		
-		self.setText("¿Estás seguro de querer eliminar esta licencia?".decode('utf-8'))
-		self.setDetailedText("Esta acción no se puede deshacer.".decode('utf-8'))
+		self.setText("<b>¿Estás seguro de querer eliminar esta licencia?</b>".decode('utf-8'))
+		self.setInformativeText("Esta acción no se puede deshacer.".decode('utf-8'))
 		
 		self.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
 		self.button(QMessageBox.Ok).clicked.connect(lambda : self.accept())
@@ -53,6 +53,8 @@ class Lic_Eliminar(QMessageBox):
 			if l.desde == desde:
 				self.l = l
 				break
+		
+		self.setDefaultButton(QMessageBox.Ok)
 		
 		self.show()
 	
