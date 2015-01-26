@@ -3,7 +3,6 @@ MEJORAS:
 Crear un entorno de desarrollo conectado con el de produccion.
 Al iniciar el programa mostrar un mensaje de cargando.
 Crear un logger
-Que los empleados y las licencias se puedan cargar con el documento tambien
 Arrastrar empleados al tw de licencias
 
 

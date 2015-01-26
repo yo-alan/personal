@@ -141,7 +141,7 @@ class Editar(QDialog):
 			self.done(QDialog.Accepted)
 			
 		except Exception as ex:
-			self.error.setText("Ha ocurrido un mientras intentaba editar un empleado.".decode('utf-8'))
+			self.error.setText("Ha ocurrido un error mientras intentaba editar un empleado.".decode('utf-8'))
 			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 	

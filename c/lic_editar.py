@@ -124,7 +124,7 @@ class Lic_Editar(QDialog):
 			self.done(QDialog.Accepted)
 			
 		except Exception as ex:
-			self.error.setText("Ha ocurrido un mientras intentaba editar una licencia.".decode('utf-8'))
+			self.error.setText("Ha ocurrido un error mientras intentaba editar una licencia.".decode('utf-8'))
 			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 	

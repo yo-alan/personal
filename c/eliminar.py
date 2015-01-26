@@ -4,23 +4,33 @@
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
+from c.error import Error
 from v.ui_eliminar import Ui_Eliminar
-from m.empleado import Empleado
 
-class Eliminar(QDialog):
+class Eliminar(QMessageBox):
 	
 	principal = None
+	error = None
 	
 	def __init__(self, principal):
 		QDialog.__init__(self, principal)
 		self.ui = Ui_Eliminar()
 		self.ui.setupUi(self)
 		
-		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
-		self.ui.buttonBox.button(QDialogButtonBox.Cancel).setText("Cancelar")
-		
 		self.principal = principal
 		
+		self.error = Error(self)
+		
+		self.setText("¿Estás seguro de querer eliminar este empleado?".decode('utf-8'))
+		self.setDetailedText("Esta acción no se puede deshacer.".decode('utf-8'))
+		
+		self.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+		self.button(QMessageBox.Ok).clicked.connect(lambda : self.accept())
+		
+		self.setButtonText(QMessageBox.Ok, "Eliminar")
+		self.setButtonText(QMessageBox.Cancel, "Cancelar")
+		
+		self.setIcon(QMessageBox.Warning)
 	
 	def center(self):
 		qr = self.frameGeometry()
@@ -42,6 +52,8 @@ class Eliminar(QDialog):
 			if e.documento == documento:
 				self.e = e
 				break
+		
+		self.setDefaultButton(QMessageBox.Ok)
 		
 		self.show()
 	
@@ -77,6 +89,6 @@ class Eliminar(QDialog):
 			self.done(QDialog.Accepted)
 			
 		except Exception as ex:
-			self.error.setText("Ha ocurrido un mientras intentaba eliminar un empleado.".decode('utf-8'))
+			self.error.setText("Ha ocurrido un error mientras intentaba eliminar un empleado.".decode('utf-8'))
 			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()

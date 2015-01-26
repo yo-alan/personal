@@ -109,7 +109,7 @@ class Lic_Agregar(QDialog):
 			self.done(QDialog.Accepted)
 			
 		except Exception as ex:
-			self.error.setText("Ha ocurrido un mientras intentaba agregar un licencia nueva.".decode('utf-8'))
+			self.error.setText("Ha ocurrido un error mientras intentaba agregar un licencia nueva.".decode('utf-8'))
 			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 	

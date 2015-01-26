@@ -5,6 +5,7 @@ import datetime, sys, os
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
+from util.sistema import *
 
 from v.ui_principal import Ui_Principal
 from c.agregar import Agregar
@@ -35,9 +36,18 @@ def fecha_actual():
 
 def reiniciar():
 	
+	erase_pid_file()
+	
 	python = sys.executable
 	
 	os.execl(python, python, * sys.argv)
+
+def salir():
+	
+	erase_pid_file()
+	
+	exit(0)
+
 
 class Principal(QMainWindow):
 	
@@ -116,7 +126,7 @@ class Principal(QMainWindow):
 		self.ui.aAcerca_de.triggered.connect(lambda : self.acerca_de.mostrar())
 		
 		self.ui.aReiniciar.triggered.connect(lambda : reiniciar())
-		self.ui.aSalir.triggered.connect(lambda : exit())
+		self.ui.aSalir.triggered.connect(lambda : salir())
 	
 	def mostrar(self, ):
 		

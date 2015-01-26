@@ -7,7 +7,7 @@ from PyQt4.QtCore import *
 from c.error import Error
 from v.ui_lic_eliminar import Ui_Lic_Eliminar
 
-class Lic_Eliminar(QDialog):
+class Lic_Eliminar(QMessageBox):
 	
 	l = None
 	error = None
@@ -17,12 +17,18 @@ class Lic_Eliminar(QDialog):
 		self.ui = Ui_Lic_Eliminar()
 		self.ui.setupUi(self)
 		
-		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
-		self.ui.buttonBox.button(QDialogButtonBox.Cancel).setText("Cancelar")
-		
 		self.error = Error(self)
 		
-		#CODIGO PARA HACER
+		self.setText("¿Estás seguro de querer eliminar esta licencia?".decode('utf-8'))
+		self.setDetailedText("Esta acción no se puede deshacer.".decode('utf-8'))
+		
+		self.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+		self.button(QMessageBox.Ok).clicked.connect(lambda : self.accept())
+		
+		self.setButtonText(QMessageBox.Ok, "Eliminar")
+		self.setButtonText(QMessageBox.Cancel, "Cancelar")
+		
+		self.setIcon(QMessageBox.Warning)
 	
 	def center(self):
 		qr = self.frameGeometry()
@@ -54,7 +60,6 @@ class Lic_Eliminar(QDialog):
 		pass
 	
 	def reject(self, ):
-		
 		self.done(QDialog.Rejected)
 	
 	def accept(self, ):
@@ -65,7 +70,7 @@ class Lic_Eliminar(QDialog):
 			self.done(QDialog.Accepted)
 			
 		except Exception as ex:
-			self.error.setText("Ha ocurrido un mientras intentaba eliminar una licencia.".decode('utf-8'))
+			self.error.setText("Ha ocurrido un error mientras intentaba eliminar una licencia.".decode('utf-8'))
 			self.error.setDetailedText(str(ex).decode('utf-8'))
 			self.error.mostrar()
 		
