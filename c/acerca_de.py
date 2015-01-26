@@ -13,6 +13,8 @@ class Acerca_de(QDialog):
 		self.ui = Ui_Acerca_de()
 		self.ui.setupUi(self)
 		
+		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
+		
 		#CODIGO PARA HACER
 	
 	def center(self):

@@ -23,6 +23,9 @@ class Lic_Agregar(QDialog):
 		self.ui = Ui_Lic_Agregar()
 		self.ui.setupUi(self)
 		
+		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
+		self.ui.buttonBox.button(QDialogButtonBox.Cancel).setText("Cancelar")
+		
 		self.error = Error(self)
 		
 		self.ui.deDesde.dateChanged.connect(lambda : self.actualizarFechas())

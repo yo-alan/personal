@@ -18,6 +18,9 @@ class Editar(QDialog):
 		self.ui = Ui_Editar()
 		self.ui.setupUi(self)
 		
+		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
+		self.ui.buttonBox.button(QDialogButtonBox.Cancel).setText("Cancelar")
+		
 		self.error = Error(self)
 		
 		self.ui.leCuil.textChanged.connect(lambda : self.cambioCuil())

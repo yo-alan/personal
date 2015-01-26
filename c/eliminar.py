@@ -16,6 +16,9 @@ class Eliminar(QDialog):
 		self.ui = Ui_Eliminar()
 		self.ui.setupUi(self)
 		
+		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
+		self.ui.buttonBox.button(QDialogButtonBox.Cancel).setText("Cancelar")
+		
 		self.principal = principal
 		
 	

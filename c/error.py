@@ -13,7 +13,9 @@ class Error(QMessageBox):
 		self.ui = Ui_Error()
 		self.ui.setupUi(self)
 		
-		self.setIcon(QMessageBox.Warning)
+		self.setButtonText(QMessageBox.Ok, "Aceptar")
+		
+		self.setIcon(QMessageBox.Critical)
 		
 		#CODIGO PARA HACER
 	

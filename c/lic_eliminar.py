@@ -17,6 +17,9 @@ class Lic_Eliminar(QDialog):
 		self.ui = Ui_Lic_Eliminar()
 		self.ui.setupUi(self)
 		
+		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
+		self.ui.buttonBox.button(QDialogButtonBox.Cancel).setText("Cancelar")
+		
 		self.error = Error(self)
 		
 		#CODIGO PARA HACER
