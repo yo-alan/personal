@@ -531,7 +531,12 @@ class Empleado(object):
 	def cuil(self, cuil):
 		
 		if cuil is None or len(cuil) < 9:
-			cuil = ""
+			
+			if self._cuil != cuil:
+				self._cuil = cuil
+				self._cambios = True
+			
+			return
 		
 		if cuil != "" and '-' in cuil:
 			try:
@@ -547,6 +552,8 @@ class Empleado(object):
 				
 			except Exception as ex:
 				raise Exception("El formato del número de cuil no es válido: " + str(cuil))
+		else:
+			raise Exception("El formato del número de cuil no es válido: " + str(cuil))
 		
 		if self._cuil != cuil or (cuil == "" and self._cuil != ""):
 			self._cuil = cuil
