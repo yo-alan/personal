@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/undercover/personal/v/ui_editar.ui'
 #
-# Created: Mon Jan 26 10:56:39 2015
+# Created: Wed Jan 28 12:54:43 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>873</width>
-    <height>537</height>
+    <width>908</width>
+    <height>549</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -278,94 +278,168 @@
               </property>
              </spacer>
             </item>
-            <item>
-             <widget class="QLabel" name="lblTipoLicencia">
-              <property name="text">
-               <string>Tipo:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="cmbTipoLicencia">
-              <item>
-               <property name="text">
-                <string>Todas</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>18</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>3</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>53</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>58</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Comisión</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Enfermedad</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Franco</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Otro</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="lblPeriodo">
-              <property name="text">
-               <string>Período:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="cmbPeriodo">
-              <item>
-               <property name="text">
-                <string>Histórico</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Última semana</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Último mes</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Último año</string>
-               </property>
-              </item>
-             </widget>
-            </item>
            </layout>
+          </item>
+          <item row="6" column="0">
+           <widget class="QGroupBox" name="groupBox">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="title">
+             <string>Filtros</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <widget class="QLabel" name="lblDesde">
+                 <property name="text">
+                  <string>Desde:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDateEdit" name="deDesde">
+                 <property name="displayFormat">
+                  <string>dd/MM/yyyy</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lblHasta">
+                 <property name="text">
+                  <string>Hasta:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDateEdit" name="deHasta">
+                 <property name="displayFormat">
+                  <string>dd/MM/yyyy</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <item>
+                <widget class="QCheckBox" name="cb18">
+                 <property name="text">
+                  <string>18</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="cb3">
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="cb53">
+                 <property name="text">
+                  <string>53</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="cb58">
+                 <property name="text">
+                  <string>58</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="cbComision">
+                 <property name="text">
+                  <string>Comisión</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="cbEnfermedad">
+                 <property name="text">
+                  <string>Enfermedad</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="cbFranco">
+                 <property name="text">
+                  <string>Franco</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="cbOtro">
+                 <property name="text">
+                  <string>Otro</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_7">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="cbActivarFiltrado">
+            <property name="text">
+             <string>Activar filtrado</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -703,7 +777,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>873</width>
+     <width>908</width>
      <height>23</height>
     </rect>
    </property>

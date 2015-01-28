@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/undercover/personal/v/ui_acerca_de.ui'
 #
-# Created: Mon Jan 26 10:56:38 2015
+# Created: Wed Jan 28 12:54:42 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!

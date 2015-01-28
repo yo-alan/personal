@@ -92,8 +92,19 @@ class Principal(QMainWindow):
 		self.ui.twLicencias.itemDoubleClicked.connect(lambda : self.lic_editar.mostrar(self))
 		self.ui.twLicencias.cellClicked.connect(lambda : self.licenciasCellClicked())
 		
-		self.ui.cmbTipoLicencia.currentIndexChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cmbPeriodo.currentIndexChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cbActivarFiltrado.stateChanged.connect(lambda : self.filtradoChecked())
+		
+		self.ui.cb18.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cb3.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cb53.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cb58.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cbComision.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cbEnfermedad.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cbFranco.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.cbOtro.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		
+		self.ui.deDesde.dateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.deHasta.dateChanged.connect(lambda : self.actualizarTwLicencias(False))
 		
 		self.ui.pbAgregar.clicked.connect(lambda : self.agregar.mostrar())
 		self.ui.pbEditar.clicked.connect(lambda : self.editar.mostrar(self))
@@ -136,7 +147,21 @@ class Principal(QMainWindow):
 		
 		self.cargarEmpleados()
 		
+		anio, mes, dia = fecha_actual().split('-')
+		
+		fecha = QDate()
+		fecha.setDate(int(anio), int(mes), int(dia))
+		self.ui.deDesde.setDate(fecha)
+		self.ui.deHasta.setDate(fecha)
+		
 		self.show()
+	
+	def filtradoChecked(self, ):
+		
+		if self.ui.cbActivarFiltrado.isChecked():
+			self.ui.groupBox.setEnabled(True)
+		else:
+			self.ui.groupBox.setEnabled(False)
 	
 	def empleadosSeleccionado(self, ):
 		
@@ -174,7 +199,7 @@ class Principal(QMainWindow):
 		
 		self.ui.twLicencias.setRowCount(0)
 		
-		tipo = str(self.ui.cmbTipoLicencia.currentText().toUtf8())
+		##########################
 		
 		if bbdd:
 			self.licencias = Licencia.de_empleado(self.e.id)
@@ -186,7 +211,7 @@ class Principal(QMainWindow):
 		
 		resultado = []
 		
-		p = str(self.ui.cmbPeriodo.currentText().toUtf8())
+		###########################
 		
 		anio, mes, dia = fecha_actual().split('-')
 		
@@ -287,8 +312,6 @@ class Principal(QMainWindow):
 		self.ui.aEditar.setEnabled(True)
 		self.ui.aEliminar.setEnabled(True)
 		self.ui.aAgregarLicencia.setEnabled(True)
-		self.ui.cmbTipoLicencia.setCurrentIndex(0)
-		self.ui.cmbPeriodo.setCurrentIndex(0)
 		
 		for e in self.empleados:
 			if e.documento == int(documento):
