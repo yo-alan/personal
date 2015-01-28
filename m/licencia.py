@@ -364,7 +364,12 @@ class Licencia(object):
 			comp_desde = datetime(int(danio), int(dmes), int(ddia))
 			comp_hasta = datetime(int(hanio), int(hmes), int(hdia))
 			
+			if ((comp_hasta - comp_desde).days + 1) < 1:
+				self._hasta = ""
+				return
+			
 			self.dias_tomados = (comp_hasta - comp_desde).days + 1
+			
 	
 	@property
 	def hasta(self):
@@ -410,6 +415,10 @@ class Licencia(object):
 			
 			comp_desde = datetime(int(danio), int(dmes), int(ddia))
 			comp_hasta = datetime(int(hanio), int(hmes), int(hdia))
+			
+			if ((comp_hasta - comp_desde).days + 1) < 1:
+				self._desde = ""
+				return
 			
 			self.dias_tomados = (comp_hasta - comp_desde).days + 1
 	

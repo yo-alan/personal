@@ -63,6 +63,8 @@ class Principal(QMainWindow):
 	empleados = []
 	licencias = []
 	mensaje_estado = None
+	empleados_display = 0
+	licencias_display = 0
 	
 	def __init__(self, ):
 		QMainWindow.__init__(self, None)
@@ -138,11 +140,11 @@ class Principal(QMainWindow):
 	
 	def empleadosSeleccionado(self, ):
 		
-		self.estado("Empleados: " + str(len(self.empleados)) + " en total.")
+		self.estado("Empleados: " + str(self.empleados_display) + " en total.")
 	
 	def licenciasSeleccionado(self, ):
 		
-		self.estado("Licencias: " + str(len(self.licencias)) + " en total.")
+		self.estado("Licencias: " + str(self.licencias_display) + " en total.")
 	
 	def editarObservaciones(self, ):
 		
@@ -163,10 +165,12 @@ class Principal(QMainWindow):
 				self.ui.txtEObservaciones.setEnabled(False)
 				
 				self.ui.pbEditarObservaciones.setText("Editar")
-			except Exception as e:
-				print str(e)
+			except Exception as ex:
+				print str(ex)
 	
 	def actualizarTwLicencias(self, bbdd=True, ):
+		
+		self.licencias_display = 0
 		
 		self.ui.twLicencias.setRowCount(0)
 		
@@ -207,9 +211,13 @@ class Principal(QMainWindow):
 				
 				if (tipo == "Todas" or l.tipo == tipo) and dtDesde >= periodo:
 					resultado.append(l)
+					
+					self.licencias_display = self.licencias_display + 1
 				
 			elif (tipo == "Todas" or l.tipo == tipo):
 				resultado.append(l)
+				
+				self.licencias_display = self.licencias_display + 1
 			
 		
 		i = 0
@@ -240,6 +248,8 @@ class Principal(QMainWindow):
 			
 			i = i + 1
 			rows = rows + 1
+		
+		self.estado("Empleados: " + str(self.licencias_display) + " en total.")
 		
 	
 	def licenciasCellClicked(self, ):
@@ -348,6 +358,8 @@ class Principal(QMainWindow):
 	
 	def actualizarTwEmpleados(self, ):
 		
+		self.empleados_display = 0
+		
 		self.ui.twEmpleados.clear()
 		
 		items = []
@@ -370,8 +382,12 @@ class Principal(QMainWindow):
 			item.setToolTip(0, str(e).decode('utf-8'))
 			
 			items.append(item)
+			
+			self.empleados_display = self.empleados_display + 1
 		
 		self.ui.twEmpleados.addTopLevelItems(items)
+		
+		self.estado("Empleados: " + str(self.empleados_display) + " en total.")
 	
 	def estado(self, msg):
 		
