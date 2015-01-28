@@ -249,7 +249,7 @@ class Principal(QMainWindow):
 			i = i + 1
 			rows = rows + 1
 		
-		self.estado("Empleados: " + str(self.licencias_display) + " en total.")
+		self.estado("Licencias: " + str(self.licencias_display) + " en total.")
 		
 	
 	def licenciasCellClicked(self, ):
