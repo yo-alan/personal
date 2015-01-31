@@ -28,8 +28,6 @@ class Lic_Editar(QDialog):
 		
 		self.ui.deDesde.dateChanged.connect(lambda : self.actualizarFechas())
 		self.ui.deHasta.dateChanged.connect(lambda : self.actualizarFechas())
-		
-		#CODIGO PARA HACER
 	
 	def mostrar(self, principal):
 		
@@ -92,8 +90,6 @@ class Lic_Editar(QDialog):
 			qdhasta.setDate(int(danio), int(dmes), int(ddia))
 			
 			self.ui.deHasta.setDate(qdhasta)
-		
-		hasta = str(self.ui.deHasta.text())
 	
 	def closeEvent(self, event):
 		pass
@@ -108,18 +104,10 @@ class Lic_Editar(QDialog):
 		
 		try:
 			
-			self.l._desde = ""
-			self.l._hasta = ""
-			
-			tipo = self.ui.cmbTipoLicencia.currentText().toUtf8()
-			desde = self.ui.deDesde.text()
-			hasta = self.ui.deHasta.text()
-			comentario = self.ui.leComentario.text().toUtf8()
-			
-			self.l.tipo = str(tipo)
-			self.l.desde = str(desde)
-			self.l.hasta = str(hasta)
-			self.l.comentario = str(comentario)
+			self.l.tipo = str(self.ui.cmbTipoLicencia.currentText().toUtf8())
+			self.l.desde = str(self.ui.deDesde.text())
+			self.l.hasta = str(self.ui.deHasta.text())
+			self.l.comentario = str(self.ui.leComentario.text().toUtf8())
 			
 			
 			self.l.guardar()
