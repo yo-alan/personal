@@ -14,8 +14,6 @@ class Acerca_de(QDialog):
 		self.ui.setupUi(self)
 		
 		self.ui.buttonBox.button(QDialogButtonBox.Ok).setText("Aceptar")
-		
-		#CODIGO PARA HACER
 	
 	def center(self):
 		qr = self.frameGeometry()
@@ -26,16 +24,14 @@ class Acerca_de(QDialog):
 	def mostrar(self):
 		
 		self.show()
+		
+		self.center()
 	
 	def closeEvent(self, event):
 		pass
 	
 	def reject(self, ):
-		
-		print "Cancelado"
 		self.done(QDialog.Rejected)
 		
 	def accept(self, ):
-		
-		print "Aceptado"
 		self.done(QDialog.Accepted)

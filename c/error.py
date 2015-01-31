@@ -16,8 +16,6 @@ class Error(QMessageBox):
 		self.setButtonText(QMessageBox.Ok, "Aceptar")
 		
 		self.setIcon(QMessageBox.Critical)
-		
-		#CODIGO PARA HACER
 	
 	def center(self):
 		qr = self.frameGeometry()
@@ -27,7 +25,7 @@ class Error(QMessageBox):
 	
 	def mostrar(self, ):
 		
-		self.exec_()
+		self.show()
 		
 		self.center()
 	

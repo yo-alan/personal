@@ -38,8 +38,6 @@ class Lic_Eliminar(QMessageBox):
 	
 	def mostrar(self, principal):
 		
-		self.center()
-		
 		fila = principal.ui.twLicencias.currentRow()
 		
 		item = principal.ui.twLicencias.item(fila, 1)
@@ -57,6 +55,9 @@ class Lic_Eliminar(QMessageBox):
 		self.setDefaultButton(QMessageBox.Ok)
 		
 		self.show()
+		
+		self.center()
+		
 	
 	def closeEvent(self, event):
 		pass

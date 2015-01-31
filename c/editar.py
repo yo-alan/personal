@@ -24,8 +24,6 @@ class Editar(QDialog):
 		self.error = Error(self)
 		
 		self.ui.leCuil.textChanged.connect(lambda : self.cambioCuil())
-		
-		#CODIGO PARA HACER
 	
 	def center(self):
 		qr = self.frameGeometry()

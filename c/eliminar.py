@@ -40,8 +40,6 @@ class Eliminar(QMessageBox):
 	
 	def mostrar(self, principal):
 		
-		self.center()
-		
 		empleado = str(principal.ui.lblEmpleado.text().toUtf8())
 		
 		documento = empleado.split('(')[1]
@@ -55,9 +53,11 @@ class Eliminar(QMessageBox):
 		
 		self.setDefaultButton(QMessageBox.Ok)
 		
-		self.setDetailedText(empleado.decode('utf-8'))
+		self.setDetailedText(("Está a punto de eliminar a '" + empleado + "' como empleado, esta acción no tiene vuelta atrás.").decode('utf-8'))
 		
 		self.show()
+		
+		self.center()
 	
 	def closeEvent(self, event):
 		pass
@@ -69,24 +69,6 @@ class Eliminar(QMessageBox):
 		
 		try:
 			self.e.eliminar()
-			
-			self.principal.ui.lblEmpleado.setText("Apellido, Nombre (documento)")
-			self.principal.ui.txtEObservaciones.setText("")
-			self.principal.ui.txtEObservaciones.setEnabled(False)
-			self.principal.ui.pbEditar.setEnabled(False)
-			self.principal.ui.pbEliminar.setEnabled(False)
-			self.principal.ui.pbLicAgregar.setEnabled(False)
-			self.principal.ui.pbLicEditar.setEnabled(False)
-			self.principal.ui.pbLicEliminar.setEnabled(False)
-			self.principal.ui.aAgregarLicencia.setEnabled(False)
-			self.principal.ui.aEditarLicencia.setEnabled(False)
-			self.principal.ui.aEliminarLicencia.setEnabled(False)
-			
-			for i in range(0, 5):
-				self.principal.ui.twDatosLaborales.setItem(i, 1, QTableWidgetItem())
-			
-			for i in range(0, 7):
-				self.principal.ui.twDatosPersonales.setItem(i, 1, QTableWidgetItem())
 			
 			self.done(QDialog.Accepted)
 			

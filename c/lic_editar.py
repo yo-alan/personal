@@ -68,7 +68,7 @@ class Lic_Editar(QDialog):
 		self.ui.deHasta.setDate(fecha_hasta)
 		
 		if self.l.comentario != "":
-			self.ui.leComentario.setText(self.l.comentario)
+			self.ui.leComentario.setText(self.l.comentario.decode('utf-8'))
 		
 		self.show()
 	
@@ -92,6 +92,8 @@ class Lic_Editar(QDialog):
 			qdhasta.setDate(int(danio), int(dmes), int(ddia))
 			
 			self.ui.deHasta.setDate(qdhasta)
+		
+		hasta = str(self.ui.deHasta.text())
 	
 	def closeEvent(self, event):
 		pass
@@ -105,7 +107,10 @@ class Lic_Editar(QDialog):
 	def accept(self, ):
 		
 		try:
-		
+			
+			self.l._desde = ""
+			self.l._hasta = ""
+			
 			tipo = self.ui.cmbTipoLicencia.currentText().toUtf8()
 			desde = self.ui.deDesde.text()
 			hasta = self.ui.deHasta.text()

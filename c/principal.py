@@ -116,7 +116,7 @@ class Principal(QMainWindow):
 		
 		self.agregar.accepted.connect(lambda : self.cargarEmpleados())
 		self.editar.accepted.connect(lambda : self.cargarEmpleados())
-		self.eliminar.accepted.connect(lambda : self.cargarEmpleados())
+		self.eliminar.accepted.connect(lambda : self.limpiarDatos())
 		
 		self.lic_agregar.accepted.connect(lambda : self.actualizarTwLicencias())
 		self.lic_editar.accepted.connect(lambda : self.actualizarTwLicencias())
@@ -145,16 +145,19 @@ class Principal(QMainWindow):
 		
 		self.center()
 		
-		self.cargarEmpleados()
-		
 		anio, mes, dia = fecha_actual().split('-')
 		
 		fecha = QDate()
 		fecha.setDate(int(anio), int(mes), int(dia))
-		self.ui.deDesde.setDate(fecha)
 		self.ui.deHasta.setDate(fecha)
 		
+		fecha = QDate()
+		fecha.setDate(int(anio)-1, int(mes), int(dia))
+		self.ui.deDesde.setDate(fecha)
+		
 		self.show()
+		
+		self.cargarEmpleados()
 	
 	def filtradoChecked(self, ):
 		
@@ -162,14 +165,41 @@ class Principal(QMainWindow):
 			self.ui.groupBox.setEnabled(True)
 		else:
 			self.ui.groupBox.setEnabled(False)
+		
+		self.actualizarTwLicencias(False)
 	
 	def empleadosSeleccionado(self, ):
-		
 		self.estado("Empleados: " + str(self.empleados_display) + " en total.")
 	
 	def licenciasSeleccionado(self, ):
-		
 		self.estado("Licencias: " + str(self.licencias_display) + " en total.")
+	
+	def limpiarDatos(self, ):
+		
+		self.ui.lblEmpleado.setText("Apellido, Nombre (documento)")
+		self.ui.txtEObservaciones.setText("")
+		self.ui.txtEObservaciones.setEnabled(False)
+		self.ui.pbEditar.setEnabled(False)
+		self.ui.pbEliminar.setEnabled(False)
+		self.ui.pbLicAgregar.setEnabled(False)
+		self.ui.pbLicEditar.setEnabled(False)
+		self.ui.pbLicEliminar.setEnabled(False)
+		self.ui.aAgregarLicencia.setEnabled(False)
+		self.ui.aEditarLicencia.setEnabled(False)
+		self.ui.aEliminarLicencia.setEnabled(False)
+		self.ui.groupBox.setEnabled(False)
+		self.ui.cbActivarFiltrado.setCheckState(False)
+		
+		while self.ui.twLicencias.rowCount() > 0:
+			self.ui.twLicencias.removeRow(0)
+		
+		for i in range(0, 5):
+			self.ui.twDatosLaborales.setItem(i, 1, QTableWidgetItem())
+		
+		for i in range(0, 7):
+			self.ui.twDatosPersonales.setItem(i, 1, QTableWidgetItem())
+		
+		self.cargarEmpleados()
 	
 	def editarObservaciones(self, ):
 		
@@ -195,55 +225,82 @@ class Principal(QMainWindow):
 	
 	def actualizarTwLicencias(self, bbdd=True, ):
 		
-		self.licencias_display = 0
-		
-		self.ui.twLicencias.setRowCount(0)
-		
-		##########################
-		
 		if bbdd:
 			self.licencias = Licencia.de_empleado(self.e.id)
 		
 		if len(self.licencias) == 0:
 			self.ui.pbLicEditar.setEnabled(False)
 			self.ui.pbLicEliminar.setEnabled(False)
+			
+			while self.ui.twLicencias.rowCount() > 0:
+				self.ui.twLicencias.removeRow(0)
+			
 			return
+		
+		self.licencias_display = 0
+		
+		self.ui.twLicencias.setRowCount(0)
+		
+		tipos = []
+		
+		if self.ui.groupBox.isEnabled():
+			
+			if self.ui.cb18.checkState():
+				tipos.append("18")
+			
+			if self.ui.cb3.checkState():
+				tipos.append("3")
+			
+			if self.ui.cb53.checkState():
+				tipos.append("53")
+			
+			if self.ui.cb58.checkState():
+				tipos.append("58")
+			
+			if self.ui.cbComision.checkState():
+				tipos.append("Comisión")
+			
+			if self.ui.cbEnfermedad.checkState():
+				tipos.append("Enfermedad")
+			
+			if self.ui.cbFranco.checkState():
+				tipos.append("Franco")
+			
+			if self.ui.cbOtro.checkState():
+				tipos.append("Otro")
+			
+			desde = str(self.ui.deDesde.text())
+			hasta = str(self.ui.deHasta.text())
+			
+			dia, mes, anio = desde.split('/')
+			
+			comp_desde = datetime.datetime(int(anio), int(mes), int(dia))
+			
+			dia, mes, anio = hasta.split('/')
+			
+			comp_hasta = datetime.datetime(int(anio), int(mes), int(dia))
 		
 		resultado = []
 		
-		###########################
-		
-		anio, mes, dia = fecha_actual().split('-')
-		
-		periodo = None
-		
-		if p == "Última semana":
-			actual = datetime.datetime(int(anio), int(mes), int(dia))
-			
-			periodo = datetime.datetime(int(anio), int(mes), int(dia) - actual.weekday())
-		elif p == "Último mes":
-			periodo = datetime.datetime(int(anio), int(mes), 1)
-		elif p == "Último año":
-			periodo = datetime.datetime(int(anio), 1, 1)
-		
 		for l in self.licencias:
 			
-			if periodo is not None:
+			if self.ui.groupBox.isEnabled():
 				
 				dia, mes, anio = l.desde.split('/')
 				
-				dtDesde = datetime.datetime(int(anio), int(mes), int(dia))
+				comp_actual = datetime.datetime(int(anio), int(mes), int(dia))
 				
-				if (tipo == "Todas" or l.tipo == tipo) and dtDesde >= periodo:
+				if l.tipo in tipos and comp_desde <= comp_actual and comp_actual <= comp_hasta:
+					
 					resultado.append(l)
 					
 					self.licencias_display = self.licencias_display + 1
+			
+			else:
 				
-			elif (tipo == "Todas" or l.tipo == tipo):
 				resultado.append(l)
 				
 				self.licencias_display = self.licencias_display + 1
-			
 		
 		i = 0
 		rows = 1
@@ -275,7 +332,6 @@ class Principal(QMainWindow):
 			rows = rows + 1
 		
 		self.estado("Licencias: " + str(self.licencias_display) + " en total.")
-		
 	
 	def licenciasCellClicked(self, ):
 		
