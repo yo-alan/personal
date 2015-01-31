@@ -79,9 +79,9 @@ class Licencia(object):
 			return
 		
 		if tipo != "":
-			consulta = "SELECT id FROM licencia WHERE tipo = '" + str(tipo) + "' AND id_empleado = " + str(id_empleado) + " ORDER BY desde"
+			consulta = "SELECT id FROM licencia WHERE tipo = '" + str(tipo) + "' AND id_empleado = " + str(id_empleado) + " ORDER BY desde DESC"
 		else:
-			consulta = "SELECT id FROM licencia WHERE id_empleado = " + str(id_empleado) + " ORDER BY desde"
+			consulta = "SELECT id FROM licencia WHERE id_empleado = " + str(id_empleado) + " ORDER BY desde DESC"
 		
 		Conexion.ejecutar(consulta)
 		
