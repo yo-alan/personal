@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>908</width>
+    <width>974</width>
     <height>549</height>
    </rect>
   </property>
@@ -337,82 +337,92 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_10">
                <item>
-                <widget class="QCheckBox" name="cb18">
+                <widget class="QRadioButton" name="rbTodas">
+                 <property name="text">
+                  <string>Todas</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="rb18">
                  <property name="text">
                   <string>18</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="cb3">
+                <widget class="QRadioButton" name="rb3">
                  <property name="text">
                   <string>3</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="cb53">
+                <widget class="QRadioButton" name="rb53">
                  <property name="text">
                   <string>53</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="cb58">
+                <widget class="QRadioButton" name="rb58">
                  <property name="text">
                   <string>58</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="cbComision">
+                <widget class="QRadioButton" name="rbComision">
                  <property name="text">
                   <string>Comisión</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="cbEnfermedad">
+                <widget class="QRadioButton" name="rbEnfermedad">
                  <property name="text">
                   <string>Enfermedad</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="cbFranco">
+                <widget class="QRadioButton" name="rbFranco">
                  <property name="text">
                   <string>Franco</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QCheckBox" name="cbOtro">
+                <widget class="QRadioButton" name="rbOtro">
                  <property name="text">
                   <string>Otro</string>
                  </property>
                  <property name="checked">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
@@ -777,7 +787,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>908</width>
+     <width>974</width>
      <height>23</height>
     </rect>
    </property>

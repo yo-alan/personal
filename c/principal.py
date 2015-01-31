@@ -94,14 +94,15 @@ class Principal(QMainWindow):
 		
 		self.ui.cbActivarFiltrado.stateChanged.connect(lambda : self.filtradoChecked())
 		
-		self.ui.cb18.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cb3.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cb53.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cb58.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cbComision.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cbEnfermedad.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cbFranco.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
-		self.ui.cbOtro.stateChanged.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rb18.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rb3.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rb53.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rb58.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rbComision.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rbEnfermedad.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rbFranco.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rbOtro.clicked.connect(lambda : self.actualizarTwLicencias(False))
+		self.ui.rbTodas.clicked.connect(lambda : self.actualizarTwLicencias(False))
 		
 		self.ui.deDesde.dateChanged.connect(lambda : self.actualizarTwLicencias(False))
 		self.ui.deHasta.dateChanged.connect(lambda : self.actualizarTwLicencias(False))
@@ -241,33 +242,28 @@ class Principal(QMainWindow):
 		
 		self.ui.twLicencias.setRowCount(0)
 		
-		tipos = []
+		tipo = ""
 		
 		if self.ui.groupBox.isEnabled():
 			
-			if self.ui.cb18.checkState():
-				tipos.append("18")
-			
-			if self.ui.cb3.checkState():
-				tipos.append("3")
-			
-			if self.ui.cb53.checkState():
-				tipos.append("53")
-			
-			if self.ui.cb58.checkState():
-				tipos.append("58")
-			
-			if self.ui.cbComision.checkState():
-				tipos.append("Comisión")
-			
-			if self.ui.cbEnfermedad.checkState():
-				tipos.append("Enfermedad")
-			
-			if self.ui.cbFranco.checkState():
-				tipos.append("Franco")
-			
-			if self.ui.cbOtro.checkState():
-				tipos.append("Otro")
+			if self.ui.rb18.isChecked():
+				tipo = "18"
+			elif self.ui.rb3.isChecked():
+				tipo = "3"
+			elif self.ui.rb53.isChecked():
+				tipo = "53"
+			elif self.ui.rb58.isChecked():
+				tipo = "58"
+			elif self.ui.rbComision.isChecked():
+				tipo = "Comisión"
+			elif self.ui.rbEnfermedad.isChecked():
+				tipo = "Enfermedad"
+			elif self.ui.rbFranco.isChecked():
+				tipo = "Franco"
+			elif self.ui.rbOtro.isChecked():
+				tipo = "Otro"
+			else:
+				tipo = "Todas"
 			
 			desde = str(self.ui.deDesde.text())
 			hasta = str(self.ui.deHasta.text())
@@ -290,7 +286,7 @@ class Principal(QMainWindow):
 				
 				comp_actual = datetime.datetime(int(anio), int(mes), int(dia))
 				
-				if l.tipo in tipos and comp_desde <= comp_actual and comp_actual <= comp_hasta:
+				if (l.tipo in tipo or tipo == "Todas") and comp_desde <= comp_actual and comp_actual <= comp_hasta:
 					
 					resultado.append(l)
 					
