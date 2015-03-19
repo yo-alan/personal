@@ -8,13 +8,13 @@ DROP TABLE conyuge;
 DROP TABLE licencia;
 DROP TABLE empleado;
 
-\i ~/Dropbox/Personal/database/empleado.sql
-\i ~/Dropbox/Personal/database/licencia.sql
-\i ~/Dropbox/Personal/database/conyuge.sql
-\i ~/Dropbox/Personal/database/hijo.sql
-\i ~/Dropbox/Personal/database/francos_ganados.sql
-\i ~/Dropbox/Personal/database/horas_extras.sql
-\i ~/Dropbox/Personal/database/vacaciones.sql
-\i ~/Dropbox/Personal/database/decreto.sql
-\i ~/Dropbox/Personal/database/observaciones.sql
-\i ~/Dropbox/Personal/database/triggers.sql
+\i ~/dev/personal/db/empleado.sql
+\i ~/dev/personal/db/licencia.sql
+\i ~/dev/personal/db/conyuge.sql
+\i ~/dev/personal/db/hijo.sql
+\i ~/dev/personal/db/francos_ganados.sql
+\i ~/dev/personal/db/horas_extras.sql
+\i ~/dev/personal/db/vacaciones.sql
+\i ~/dev/personal/db/decreto.sql
+\i ~/dev/personal/db/observaciones.sql
+\i ~/dev/personal/db/triggers.sql
