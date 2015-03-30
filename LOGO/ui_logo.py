@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_logo.ui'
 #
-# Created: Tue Dec 30 18:33:47 2014
+# Created: Mon Mar 30 11:24:57 2015
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -20,12 +20,9 @@ class Ui_Logo(object):
         Logo.resize(320, 240)
         self.centralwidget = QtGui.QWidget(Logo)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.pushButton = QtGui.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(120, 80, 96, 27))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
         Logo.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(Logo)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 320, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 320, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         Logo.setMenuBar(self.menubar)
 
@@ -34,5 +31,4 @@ class Ui_Logo(object):
 
     def retranslateUi(self, Logo):
         Logo.setWindowTitle(QtGui.QApplication.translate("Logo", "MainWindow", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton.setText(QtGui.QApplication.translate("Logo", "CARGANDO...", None, QtGui.QApplication.UnicodeUTF8))
 

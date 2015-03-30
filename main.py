@@ -16,7 +16,7 @@ def main():
 	except Exception as ex:
 		print ex
 		erase_pid_file()
-		exit(1)
+		return 1
 	
 	return app.exec_()
 
