@@ -4,6 +4,7 @@ Crear un entorno de desarrollo conectado con el de produccion.
 Al iniciar el programa mostrar un mensaje de cargando.
 Implementar un logger.
 Arrastrar empleados al tw de licencias.
+Utilizar "pie charts" para mostrar los distintos porcentajes de licencias.
 
 
 HECHAS:
