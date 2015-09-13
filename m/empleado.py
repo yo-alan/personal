@@ -1,6 +1,6 @@
 # coding=utf-8
-
 from datetime import datetime
+
 from conexion import Conexion
 from licencia import Licencia
 
@@ -234,7 +234,8 @@ class Empleado(object):
 			if id_bbdd is not None:
 				raise Exception("Ya existe un empleado con ese documento: " + str(self.documento))
 			
-			consulta = "INSERT INTO empleado('a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12') VALUES('v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7', 'v8', 'v9', 'v10', 'v11', 'v12', 'v13') RETURNING id"
+			consulta = "INSERT INTO empleado('a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12') \
+						VALUES('v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7', 'v8', 'v9', 'v10', 'v11', 'v12', 'v13') RETURNING id"
 			
 			for i in range(1, 14):
 				
@@ -274,7 +275,20 @@ class Empleado(object):
 						raise Exception("Ya existe un empleado con ese documento: ", self.documento)
 						
 			
-			consulta = "UPDATE empleado SET 'a1' = 'v1', 'a2' = 'v2', 'a3' = 'v3', 'a4' = 'v4', 'a5' = 'v5', 'a6' = 'v6', 'a7' = 'v7', 'a8' = 'v8', 'a9' = 'v9', 'a10' = 'v10', 'a11' = 'v11', 'a12' = 'v12', 'a13' = 'v13' WHERE id = " + str(self.id)
+			consulta = "UPDATE empleado SET 'a1' = 'v1',\
+											'a2' = 'v2',\
+											'a3' = 'v3',\
+											'a4' = 'v4',\
+											'a5' = 'v5',\
+											'a6' = 'v6',\
+											'a7' = 'v7',\
+											'a8' = 'v8',\
+											'a9' = 'v9',\
+											'a10' = 'v10',\
+											'a11' = 'v11',\
+											'a12' = 'v12',\
+											'a13' = 'v13'\
+											WHERE id = " + str(self.id)
 			
 			for i in range(1, 14):
 				
@@ -593,7 +607,8 @@ class Empleado(object):
 		if not isinstance(sit_revista, str):
 			raise Exception("La situación de revista no puede estar vacía.")
 		
-		situaciones = ['Transitoria', 'Temporaria', 'Permanente', 'Pasantía', 'Comisión']
+		situaciones = ['Transitoria', 'Temporaria', 'Permanente',\
+						'Pasantía', 'Comisión']
 		
 		if not sit_revista.capitalize() in situaciones:
 			raise Exception("La situación de revista no corresponde a un valor disponible.")
@@ -612,7 +627,8 @@ class Empleado(object):
 		if not isinstance(cargo, str):
 			raise Exception("El cargo no puede estar vacío.")
 		
-		cargos = ['Administrativo', 'Jerárquico', 'Obrero', 'Profesional', 'Servicio']
+		cargos = ['Administrativo', 'Jerárquico', 'Obrero',\
+					'Profesional', 'Servicio']
 		
 		if not cargo.capitalize() in cargos:
 			raise Exception("El cargo no corresponde a un valor disponible.")

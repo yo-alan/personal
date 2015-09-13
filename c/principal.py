@@ -1,11 +1,12 @@
 # coding=utf-8
-
-import datetime, sys, os
+import datetime
+import sys
+import os
 
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
-from util.sistema import *
 
+from util.sistema import *
 from v.ui_principal import Ui_Principal
 from c.agregar import Agregar
 from c.editar import Editar
@@ -14,7 +15,6 @@ from c.lic_agregar import Lic_Agregar
 from c.lic_editar import Lic_Editar
 from c.lic_eliminar import Lic_Eliminar
 from c.acerca_de import Acerca_de
-
 from m.empleado import Empleado
 from m.licencia import Licencia
 

@@ -1,9 +1,10 @@
 #! /usr/bin/python
 # coding=utf-8
-
 import sys
+
 from PyQt4.QtGui import *
 from PyQt4.QtCore import *
+
 from c.principal import Principal
 from util.sistema import *
 

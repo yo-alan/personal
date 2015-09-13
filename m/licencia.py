@@ -1,6 +1,6 @@
 # coding=utf-8
-
 import sys
+
 from conexion import Conexion
 from datetime import date, datetime
 
@@ -21,7 +21,8 @@ class Licencia(object):
 		if id_bbdd < 1:
 			return
 		
-		consulta = "SELECT id, id_empleado, desde, hasta, dias_tomados, tipo, comentario FROM licencia WHERE id = " + str(id_bbdd)
+		consulta = "SELECT id, id_empleado, desde, hasta, dias_tomados, tipo, comentario\
+					FROM licencia WHERE id = " + str(id_bbdd)
 		
 		Conexion.ejecutar(consulta)
 		
@@ -49,7 +50,8 @@ class Licencia(object):
 		
 		l = Licencia()
 		
-		consulta = "SELECT id, id_empleado, desde, hasta, dias_tomados, tipo, comentario FROM licencia WHERE id_empleado = " + str(id_empleado) + " AND desde = cast('" + str(desde) + "' as date)"
+		consulta = "SELECT id, id_empleado, desde, hasta, dias_tomados, tipo, comentario\
+					FROM licencia WHERE id_empleado = " + str(id_empleado) + " AND desde = cast('" + str(desde) + "' as date)"
 		
 		Conexion.ejecutar(consulta)
 		
@@ -217,7 +219,8 @@ class Licencia(object):
 		
 		if self._nuevo:
 			
-			consulta = "INSERT INTO licencia('a1', 'a2', 'a3', 'a4', 'a5', 'a6') VALUES('v1', 'v2', 'v3', 'v4', 'v5', 'v6') RETURNING id"
+			consulta = "INSERT INTO licencia('a1', 'a2', 'a3', 'a4', 'a5', 'a6')\
+						VALUES('v1', 'v2', 'v3', 'v4', 'v5', 'v6') RETURNING id"
 			
 			for i in range(1, 7):
 				
@@ -255,7 +258,13 @@ class Licencia(object):
 					if id_bbdd != self.id:
 						raise Exception("Ya existe esta licencia para este empleado.")
 			
-			consulta = "UPDATE licencia SET 'a1' = 'v1', 'a2' = 'v2', 'a3' = 'v3', 'a4' = 'v4', 'a5' = 'v5', 'a6' = 'v6' WHERE id = " + str(self.id)
+			consulta = "UPDATE licencia SET 'a1' = 'v1',\
+											'a2' = 'v2',\
+											'a3' = 'v3',\
+											'a4' = 'v4',\
+											'a5' = 'v5',\
+											'a6' = 'v6'\
+											WHERE id = " + str(self.id)
 			
 			for i in range(1, 7):
 				
@@ -454,7 +463,14 @@ class Licencia(object):
 		
 		tipo = tipo.capitalize()
 		
-		tipos = ['18', '3', '53', '58', 'Comisión', 'Enfermedad', 'Franco', 'Otro']
+		tipos = ['18',\
+					'3',\
+					'53',\
+					'58',\
+					'Comisión',\
+					'Enfermedad',\
+					'Franco',\
+					'Otro']
 		
 		if tipo not in tipos:
 			raise Exception("El tipo de licencia no es válido.")
