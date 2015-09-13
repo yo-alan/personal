@@ -3,3 +3,4 @@ m/conexion.py
 tests/
 compilador/
 config/personal.pid
+*.bat
